@@ -1,6 +1,6 @@
 <!-- Centered Logo -->
 <p align="center">
-  <img src="BUYINGTIME.logo.jpg" alt="Buying Time NYC Logo" width="200"/>
+  <img src="BUYINGTIME.logo.jpg" alt="Buying Time NYC Logo" width="240"/>
 </p>
 
 <h1 align="center">⏳ Buying Time NYC</h1>
@@ -10,6 +10,7 @@
 
 ## 🌐 Website  
 Our digital home bringing together **community, culture, and commerce**.  
+👉 [buyingtimenyc.com](https://buyingtimenyc.com)
 
 ## 🚀 Features  
 - Exclusive drops  
@@ -24,5 +25,11 @@ Open collaboration — from **designers** to **dreamers**.
 All are welcome.  
 
 ## 📞 Contact  
-📧 **contactpeter@buyingtimenyc.com**
+📧 [peter@buyingtimenyc.com](mailto:peter@buyingtimenyc.com)  
+🔗 [Linktree →](https://linktr.ee/Buyingtimenyc)
+
+---
+
+<p align="center">© 2025 Buying Time NYC</p>
+
 
