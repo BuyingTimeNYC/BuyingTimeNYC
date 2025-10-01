@@ -24,5 +24,5 @@ Open collaboration — from **designers** to **dreamers**.
 All are welcome.  
 
 ## 📞 Contact  
-📧 **contact@buyingtime.com**
+📧 **contactpeter@buyingtimenyc.com**
 
