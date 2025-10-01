@@ -1,16 +1,28 @@
-## Hi there 👋
+<!-- Centered Logo -->
+<p align="center">
+  <img src="BUYINGTIME.logo.jpg" alt="Buying Time NYC Logo" width="200"/>
+</p>
 
-<!--
-**BuyingTimeNYC/BuyingTimeNYC** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<h1 align="center">⏳ Buying Time NYC</h1>
+<p align="center"><i>Where vision meets hustle, and time is the ultimate currency.</i></p>
 
-Here are some ideas to get you started:
+---
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## 🌐 Website  
+Our digital home bringing together **community, culture, and commerce**.  
+
+## 🚀 Features  
+- Exclusive drops  
+- Inspiration  
+- Creative contributions  
+
+## 👁️ Vision  
+To create something **timeless** — a movement, not just a brand.  
+
+## 🤝 Contributing  
+Open collaboration — from **designers** to **dreamers**.  
+All are welcome.  
+
+## 📞 Contact  
+📧 **contact@buyingtime.com**
+
