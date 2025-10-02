@@ -1,95 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Buying Time NYC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto:wght@300&family=Monoton&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto:wght@300&family=Monoton&display=swap" rel="stylesheet" />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #0d0d0d;
-      color: #f0f0f0;
-      font-family: 'Roboto', sans-serif;
-      text-align: center;
-      line-height: 1.6;
-    }
-    header {
-      padding: 50px 20px;
-    }
-    header img {
-      width: 180px;
-      border-radius: 10px;
-    }
-    header h1 {
-      font-family: 'Monoton', cursive;
-      font-size: 50px;
-      margin: 20px 0 10px;
-      color: #ff0066;
-      text-shadow: 2px 2px #000;
-    }
-    header p {
-      font-size: 18px;
-      color: #ccc;
-      font-style: italic;
-    }
-    section {
-      margin: 40px auto;
-      max-width: 700px;
-      padding: 0 20px;
-    }
-    section h2 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 28px;
-      color: #00ffcc;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    section p {
-      font-size: 16px;
-      color: #ddd;
-    }
-    footer {
-      margin-top: 50px;
-      padding: 20px;
-      background: #111;
-      font-size: 14px;
-      color: #888;
-    }
+    :root { --bg:#0d0d0d; --fg:#f0f0f0; --muted:#ccc; --accent:#ff0066; --teal:#00ffcc; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--fg); font-family:'Roboto',sans-serif; text-align:center; line-height:1.6; }
+    header { padding:48px 20px 32px; }
+    header img { width:180px; border-radius:10px; display:block; margin:0 auto; }
+    header h1 { font-family:'Monoton',cursive; font-size:52px; margin:16px 0 8px; color:var(--accent); text-shadow:2px 2px #000; letter-spacing:1px; }
+    header p { font-size:18px; color:var(--muted); font-style:italic; }
+    main { margin:32px auto 0; max-width:860px; padding:0 20px 40px; }
+    section { margin:28px auto; max-width:700px; }
+    section h2 { font-family:'Oswald',sans-serif; font-size:28px; color:var(--teal); text-transform:uppercase; margin:0 0 8px; letter-spacing:.5px; }
+    section p { font-size:16px; color:#ddd; margin:0; }
+    footer { margin-top:40px; padding:20px; background:#111; font-size:14px; color:#888; }
+    /* simple responsive gallery (for tomorrow’s photos) */
+    .grid { display:grid; gap:14px; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); margin-top:10px; }
+    .card { background:#141414; border:1px solid #222; border-radius:12px; padding:10px; }
+    .card img { width:100%; height:180px; object-fit:cover; border-radius:8px; display:block; }
+    .caption { font-size:14px; color:#bbb; margin-top:8px; }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="BUYINGTIME.logo.jpg" alt="Buying Time NYC Logo">
+    <!-- make sure this filename EXACTLY matches what’s in your repo (case-sensitive) -->
+    <img src="BUYINGTIME.logo.jpg" alt="Buying Time NYC Logo" />
     <h1>Buying Time NYC</h1>
     <p>⏳ Where vision meets hustle, and time is the ultimate currency.</p>
   </header>
 
-  <section>
-    <h2>🌐 Website</h2>
-    <p>Our digital home bringing together community, culture, and commerce.</p>
-  </section>
+  <main>
+    <section>
+      <h2>🌐 Website</h2>
+      <p>Our digital home bringing together community, culture, and commerce.</p>
+    </section>
 
-  <section>
-    <h2>🚀 Features</h2>
-    <p>Exclusive drops, inspiration, and creative contributions.</p>
-  </section>
+    <section>
+      <h2>🚀 Features</h2>
+      <p>Exclusive drops, inspiration, and creative contributions.</p>
+    </section>
 
-  <section>
-    <h2>👁️ Vision</h2>
-    <p>To create something timeless — a movement, not just a brand.</p>
-  </section>
+    <section>
+      <h2>👁️ Vision</h2>
+      <p>To create something timeless — a movement, not just a brand.</p>
+    </section>
 
-  <section>
-    <h2>🤝 Contributing</h2>
-    <p>Open collaboration — from designers to dreamers. All are welcome.</p>
-  </section>
+    <section>
+      <h2>🤝 Contributing</h2>
+      <p>Open collaboration — from designers to dreamers. All are welcome.</p>
+    </section>
 
-  <section>
-    <h2>📞 Contact</h2>
-    <p>Email: contact@buyingtime.com</p>
-  </section>
+    <section>
+      <h2>📷 Gallery (placeholder)</h2>
+      <p>We’ll swap these for your real photos tomorrow.</p>
+      <div class="grid">
+        <div class="card">
+          <img src="assets/sample1.jpg" alt="Sample" />
+          <div class="caption">Title / short description</div>
+        </div>
+        <div class="card">
+          <img src="assets/sample2.jpg" alt="Sample" />
+          <div class="caption">Title / short description</div>
+        </div>
+        <div class="card">
+          <img src="assets/sample3.jpg" alt="Sample" />
+          <div class="caption">Title / short description</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>📞 Contact</h2>
+      <p>Email: contact@buyingtime.com</p>
+    </section>
+  </main>
 
   <footer>
     © 2025 Buying Time NYC — All Rights Reserved
@@ -97,4 +86,3 @@
 
 </body>
 </html>
-
