@@ -1,35 +1,43 @@
-<!-- Centered Logo -->
+# Buying Time NYC
+
 <p align="center">
-  <img src="BUYINGTIME.logo.jpg" alt="Buying Time NYC Logo" width="240"/>
+  <img src="./red logo btnyc.png" alt="Buying Time NYC Logo" width="260">
 </p>
 
-<h1 align="center">⏳ Buying Time NYC</h1>
-<p align="center"><i>Where vision meets hustle, and time is the ultimate currency.</i></p>
+<div align="center">
+
+<!-- Monoton font for the NYC vibe -->
+<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
+<h2 style="font-family:'Monoton', cursive; font-size:52px; color:#ff1a1a; margin:0;">
+  BUYING TIME NYC
+</h2>
+
+<p style="font-style:italic; color:#b3b3b3; font-size:18px; margin-top:6px;">
+  ⏳ Where vision meets hustle, and time is the ultimate currency.
+</p>
+
+[🌐 Linktree](https://linktr.ee/Buyingtimenyc)
+
+</div>
 
 ---
 
-## 🌐 Website  
-Our digital home bringing together **community, culture, and commerce**.  
-👉 [buyingtimenyc.com](https://buyingtimenyc.com)
+### Coming Soon
 
-## 🚀 Features  
-- Exclusive drops  
-- Inspiration  
-- Creative contributions  
+I’m **Petey**, founder of **Buying Time NYC** — building this brand with my husky, Chance, by my side.  
 
-## 👁️ Vision  
-To create something **timeless** — a movement, not just a brand.  
+Expect:
 
-## 🤝 Contributing  
-Open collaboration — from **designers** to **dreamers**.  
-All are welcome.  
+- ⌚ **Luxury timepieces**  
+- 🎯 **Exclusive drops**  
+- 🎨 **Original artwork**  
+- 🤝 **Collaborations**  
+- 🚀 And much more to come  
 
-## 📞 Contact  
-📧 [peter@buyingtimenyc.com](mailto:peter@buyingtimenyc.com)  
-🔗 [Linktree →](https://linktr.ee/Buyingtimenyc)
+<p align="center">
+  <img src="./CPREAL.jpeg" alt="Petey and Chance" width="320"><br>
+  <img src="./CPTOONPNG.png" alt="Cartoon of Petey and Chance" width="320">
+</p>
 
----
-
-<p align="center">© 2025 Buying Time NYC</p>
-
-
+Stay tuned — this is onl
