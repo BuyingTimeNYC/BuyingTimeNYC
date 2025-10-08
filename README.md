@@ -1,43 +1,43 @@
-# Buying Time NYC
-
 <p align="center">
-  <img src="./red logo btnyc.png" alt="Buying Time NYC Logo" width="260">
+  <img src="red logo btnyc.png" alt="Buying Time NYC Logo" width="300">
 </p>
 
-<div align="center">
-
-<!-- Monoton font for the NYC vibe -->
-<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-
-<h2 style="font-family:'Monoton', cursive; font-size:52px; color:#ff1a1a; margin:0;">
+<h1 align="center" style="font-family: Arial, sans-serif; font-weight: bold;">
   BUYING TIME NYC
-</h2>
+</h1>
 
-<p style="font-style:italic; color:#b3b3b3; font-size:18px; margin-top:6px;">
-  ⏳ Where vision meets hustle, and time is the ultimate currency.
-</p>
-
-[🌐 Linktree](https://linktr.ee/Buyingtimenyc)
-
-</div>
+<h3 align="center">
+  <em>Where vision meets hustle and time is the ultimate currency.</em>
+</h3>
 
 ---
 
-### Coming Soon
+### 🧠 About the Brand
 
-I’m **Petey**, founder of **Buying Time NYC** — building this brand with my husky, Chance, by my side.  
+**Buying Time NYC** is more than a store — it’s a movement. Built on hustle, legacy, and the value of time, our brand curates luxury goods, rare collectibles, deadstock fashion, and custom artwork under one digital roof. We're here to inspire and build — from the streets to the screen.
 
-Expect:
+Whether it’s vintage cards, high-end watches, exclusive drops, or one-of-one art: **if it holds value, it holds a place here.**
 
-- ⌚ **Luxury timepieces**  
-- 🎯 **Exclusive drops**  
-- 🎨 **Original artwork**  
-- 🤝 **Collaborations**  
-- 🚀 And much more to come  
+---
+
+### 🔗 Explore the Movement
+
+👉 **[Linktree - All Our Platforms](https://linktr.ee/Buyingtimenyc)**
+
+---
+
+### 🎨 Meet the Creator
 
 <p align="center">
-  <img src="./CPREAL.jpeg" alt="Petey and Chance" width="320"><br>
-  <img src="./CPTOONPNG.png" alt="Cartoon of Petey and Chance" width="320">
+  <img src="CPTOONPNG.png" alt="Cartoon of Petey and Chance" width="250"/>
 </p>
 
-Stay tuned — this is onl
+<p align="center">
+  <img src="CPREAL.jpeg" alt="Petey and Chance - Real Photo" width="250"/>
+</p>
+
+**Petey** is the heartbeat behind Buying Time NYC. A self-taught designer, artist, drummer, and dreamer — he’s turning pain into power and rebuilding the future through vision and grit. From one arm to an unstoppable brand.
+
+---
+
+> *“Love for Money” — it’s not just a tagline, it’s a lifestyle.*
