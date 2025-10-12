@@ -1,176 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Buying Time NYC</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: black;
-      color: white;
-      font-family: Arial, sans-serif;
-      overflow-x: hidden;
-    }
+<style>
+  /* Modal Styling */
+  #aboutModal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.85);
+  }
 
-    .subway-title {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding-top: 20px;
-    }
+  .modal-content {
+    background-color: #111;
+    color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border: 2px solid red;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 12px;
+    position: relative;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.6;
+  }
 
-    .subway-letter {
-      width: 40px;
-      height: 40px;
-      margin: 2px;
-      border-radius: 50%;
-      background-color: #222;
-      color: white;
-      font-weight: bold;
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: sans-serif;
-    }
+  .close-btn {
+    position: absolute;
+    top: 8px;
+    right: 14px;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
 
-    .tagline {
-      text-align: center;
-      font-family: 'Shortages', serif;
-      font-size: 18px;
-      margin: 10px 0 30px;
-      color: white;
-    }
-
-    .layout {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px;
-      position: relative;
-      z-index: 5;
-    }
-
-    .side-image {
-      width: 160px;
-      border-radius: 10px;
-    }
-
-    .logo {
-      width: 120px;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    .money-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
-    }
-
-    .money {
-      position: absolute;
-      color: greenyellow;
-      font-size: 28px;
-      opacity: 0.7;
-      animation: floatMoney 5.5s linear forwards;
-    }
-
-    @keyframes floatMoney {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) scale(1.2);
-        opacity: 0;
-      }
-    }
-
-    iframe {
-      border: none;
-    }
-
-    .buttons {
-      text-align: center;
-      margin-top: 40px;
-      z-index: 5;
-      position: relative;
-    }
-
-    .buttons button {
-      background-color: red;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      margin: 0 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    #about-me {
-      max-width: 700px;
-      margin: 40px auto;
-      text-align: center;
-      font-size: 16px;
-      line-height: 1.6;
-      display: none;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="money-container" id="money-container"></div>
-
-  <div class="subway-title" id="title">
-    <div class="subway-letter">B</div>
-    <div class="subway-letter">U</div>
-    <div class="subway-letter">Y</div>
-    <div class="subway-letter">I</div>
-    <div class="subway-letter">N</div>
-    <div class="subway-letter">G</div>
-    <div class="subway-letter">T</div>
-    <div class="subway-letter">I</div>
-    <div class="subway-letter">M</div>
-    <div class="subway-letter">E</div>
-    <div class="subway-letter">N</div>
-    <div class="subway-letter">Y</div>
-    <div class="subway-letter">C</div>
-  </div>
-
-  <div class="tagline">Where inspiration meets hustle, and time is the ultimate currency</div>
-
-  <div class="layout">
-    <img src="CPREAL.jpeg" class="side-image" alt="Petey, Shannon, and Chance" />
-    <img src="red%20logo%20btnyc.png" class="logo" alt="Heart Logo" />
-    <img src="CPTOONPNG.png" class="side-image" alt="Cartoon Petey and Chance" />
-  </div>
-
-  <div style="text-align:center;">
-    <iframe width="300" height="170" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
-  </div>
-
-  <div class="buttons">
-    <button onclick="document.getElementById('about-me').style.display='block'">About the Founder</button>
-    <button onclick="window.open('https://linktr.ee/Buyingtimenyc', '_blank')">Follow the Movement</button>
-  </div>
-
-  <div id="about-me">
+<!-- Modal -->
+<div id="aboutModal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
     <p>
       Petey is the founder of Buying Time NYC — a vision born from adversity, hustle, and pure creative fire. 
       After a life-changing injury that cost him his arm, he refused to let that stop him. Instead, he became a one-handed drummer, a collector, a builder of brands, and a living testament that time is the most valuable currency.
@@ -178,33 +49,22 @@
       Buying Time NYC represents second chances, relentless ambition, and a movement to turn pain into purpose. With Chance the husky by his side and a powerful partner in Shannon, Petey is carving out a lane where hustle meets healing — and where inspiration can be worn, watched, collected, or heard.
     </p>
   </div>
+</div>
 
-  <script>
-    const container = document.getElementById("money-container");
-    const heartX = window.innerWidth / 2;
-    const heartY = 280;
+<script>
+  function openModal() {
+    document.getElementById('aboutModal').style.display = 'block';
+  }
 
-    function createMoney() {
-      const money = document.createElement("div");
-      money.classList.add("money");
-      money.innerText = "$";
+  function closeModal() {
+    document.getElementById('aboutModal').style.display = 'none';
+  }
 
-      const angle = (Math.random() * Math.PI) - Math.PI / 2;
-      const radius = Math.random() * 400 + 100;
-
-      const x = heartX + Math.cos(angle) * radius;
-      const y = heartY - Math.abs(Math.sin(angle)) * radius;
-
-      money.style.left = `${x}px`;
-      money.style.top = `${heartY}px`;
-      container.appendChild(money);
-
-      setTimeout(() => {
-        container.removeChild(money);
-      }, 5500);
+  // Optional: Close modal on background click
+  window.onclick = function(event) {
+    const modal = document.getElementById('aboutModal');
+    if (event.target == modal) {
+      modal.style.display = "none";
     }
-
-    setInterval(createMoney, 90);
-  </script>
-</body>
-</html>
+  }
+</script>
