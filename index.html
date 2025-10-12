@@ -14,48 +14,65 @@
       overflow-x: hidden;
     }
 
-    header {
-      position: relative;
+    .subway-title {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding-top: 20px;
+    }
+
+    .subway-letter {
+      width: 40px;
+      height: 40px;
+      margin: 2px;
+      border-radius: 50%;
+      background-color: #222;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif;
+    }
+
+    .tagline {
       text-align: center;
-      padding: 30px 0;
+      font-family: 'Shortages', serif;
+      font-size: 18px;
+      margin: 10px 0 30px;
+      color: white;
+    }
+
+    .layout {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .side-image {
+      width: 160px;
+      border-radius: 10px;
     }
 
     .logo {
       width: 120px;
-      z-index: 5;
-      position: relative;
+      animation: pulse 2s infinite;
     }
 
-    .photo-left,
-    .photo-right {
-      position: absolute;
-      top: 100px;
-      width: 160px;
-      height: auto;
-      border-radius: 12px;
-      z-index: 5;
-    }
-
-    .photo-left {
-      left: 20px;
-    }
-
-    .photo-right {
-      right: 20px;
-    }
-
-    h1 {
-      font-size: 28px;
-      font-family: 'Shortages', serif;
-      margin: 20px 0 10px;
-    }
-
-    p {
-      font-size: 16px;
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
 
     .money-container {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -70,13 +87,13 @@
       color: greenyellow;
       font-size: 28px;
       opacity: 0.7;
-      animation: floatMoney 6s linear infinite;
+      animation: floatMoney 5.5s linear forwards;
     }
 
     @keyframes floatMoney {
       0% {
         transform: translateY(0) scale(1);
-        opacity: 0.7;
+        opacity: 1;
       }
       100% {
         transform: translateY(-100vh) scale(1.2);
@@ -85,54 +102,109 @@
     }
 
     iframe {
-      margin-top: 30px;
+      border: none;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-top: 40px;
       z-index: 5;
       position: relative;
-      max-width: 100%;
+    }
+
+    .buttons button {
+      background-color: red;
+      color: white;
       border: none;
+      padding: 12px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #about-me {
+      max-width: 700px;
+      margin: 40px auto;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.6;
+      display: none;
     }
   </style>
 </head>
 <body>
+
   <div class="money-container" id="money-container"></div>
 
-  <header>
-    <img src="red-logo-btnyc.png" alt="Buying Time NYC Logo" class="logo" />
-    <img src="CPREAL.jpeg" alt="Petey and Chance" class="photo-left" />
-    <img src="CPTOONPNG.png" alt="Petey Cartoon" class="photo-right" />
-    <h1>Where vision meets hustle and time is the ultimate currency</h1>
-  </header>
+  <div class="subway-title" id="title">
+    <div class="subway-letter">B</div>
+    <div class="subway-letter">U</div>
+    <div class="subway-letter">Y</div>
+    <div class="subway-letter">I</div>
+    <div class="subway-letter">N</div>
+    <div class="subway-letter">G</div>
+    <div class="subway-letter">T</div>
+    <div class="subway-letter">I</div>
+    <div class="subway-letter">M</div>
+    <div class="subway-letter">E</div>
+    <div class="subway-letter">N</div>
+    <div class="subway-letter">Y</div>
+    <div class="subway-letter">C</div>
+  </div>
+
+  <div class="tagline">Where inspiration meets hustle, and time is the ultimate currency</div>
+
+  <div class="layout">
+    <img src="CPREAL.jpeg" class="side-image" alt="Petey, Shannon, and Chance" />
+    <img src="red%20logo%20btnyc.png" class="logo" alt="Heart Logo" />
+    <img src="CPTOONPNG.png" class="side-image" alt="Cartoon Petey and Chance" />
+  </div>
 
   <div style="text-align:center;">
     <iframe width="300" height="170" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
   </div>
 
+  <div class="buttons">
+    <button onclick="document.getElementById('about-me').style.display='block'">About the Founder</button>
+    <button onclick="window.open('https://linktr.ee/Buyingtimenyc', '_blank')">Follow the Movement</button>
+  </div>
+
+  <div id="about-me">
+    <p>
+      Petey is the founder of Buying Time NYC — a vision born from adversity, hustle, and pure creative fire. 
+      After a life-changing injury that cost him his arm, he refused to let that stop him. Instead, he became a one-handed drummer, a collector, a builder of brands, and a living testament that time is the most valuable currency.
+      <br><br>
+      Buying Time NYC represents second chances, relentless ambition, and a movement to turn pain into purpose. With Chance the husky by his side and a powerful partner in Shannon, Petey is carving out a lane where hustle meets healing — and where inspiration can be worn, watched, collected, or heard.
+    </p>
+  </div>
+
   <script>
     const container = document.getElementById("money-container");
     const heartX = window.innerWidth / 2;
-    const heartY = 140; // Approx top of the heart logo
+    const heartY = 280;
 
     function createMoney() {
       const money = document.createElement("div");
       money.classList.add("money");
       money.innerText = "$";
 
-      const angle = (Math.random() - 0.5) * Math.PI; // Arch spray
-      const radius = Math.random() * 300 + 100;
+      const angle = (Math.random() * Math.PI) - Math.PI / 2;
+      const radius = Math.random() * 400 + 100;
 
       const x = heartX + Math.cos(angle) * radius;
-      const y = heartY + Math.sin(angle) * radius;
+      const y = heartY - Math.abs(Math.sin(angle)) * radius;
 
       money.style.left = `${x}px`;
-      money.style.top = `${y}px`;
+      money.style.top = `${heartY}px`;
       container.appendChild(money);
 
       setTimeout(() => {
         container.removeChild(money);
-      }, 6000);
+      }, 5500);
     }
 
-    setInterval(createMoney, 120);
+    setInterval(createMoney, 90);
   </script>
 </body>
 </html>
