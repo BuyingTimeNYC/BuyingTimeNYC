@@ -12,8 +12,13 @@
 }
 
 :root {
-  --bg:#0b0b0c;--text:#f4f4f4;--muted:#a1a1a1;--accent:#e01111;
-  --radius:18px;--shadow:0 8px 30px rgba(0,0,0,0.45);--max:1200px;
+  --bg:#0b0b0c;
+  --text:#f4f4f4;
+  --muted:#a1a1a1;
+  --accent:#e01111;
+  --radius:18px;
+  --shadow:0 8px 30px rgba(0,0,0,0.45);
+  --max:1200px;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -21,40 +26,88 @@ body{background:var(--bg);color:var(--text);font-family:'Shortages',serif;-webki
 
 header{text-align:center;padding:60px 20px 30px;position:relative;overflow:hidden}
 
-/* Heart logo pulse */
+/* Pulsing heart logo */
 .logo-pulse{
-  position:relative;width:120px;height:120px;margin:0 auto 20px;
+  position:relative;
+  width:120px;
+  height:120px;
+  margin:0 auto 20px;
   animation:throb 1.3s ease-in-out infinite;
   filter:drop-shadow(0 0 12px rgba(224,17,17,0.6));
 }
-.logo-pulse img{width:100%;height:100%;object-fit:contain;}
-@keyframes throb{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.logo-pulse img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+@keyframes throb{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.15)}
+}
 
-/* Upward burst + raining effect */
+/* Fountain rain animation */
 .dollar{
-  position:absolute;left:50%;top:0;
-  font-size:22px;color:#00ff6a;opacity:0.9;pointer-events:none;
-  animation:moneyRain 3.8s linear forwards;
+  position:absolute;
+  left:50%;
+  font-size:22px;
+  color:#00ff6a;
+  opacity:0.9;
+  pointer-events:none;
+  animation:moneyRain 3.8s ease-in-out forwards;
 }
 @keyframes moneyRain{
-  0%{transform:translate(-50%,0) scale(1);opacity:1;}
-  15%{transform:translate(-50%,-100px) scale(1.2);opacity:1;}
-  100%{transform:translate(-50%,400px) scale(1.1);opacity:0;}
+  0%{transform:translate(-50%,-20px) scale(1);opacity:1;}
+  20%{transform:translate(calc(-50% + var(--xSpread)),-150px) scale(1.2);opacity:1;}
+  100%{transform:translate(calc(-50% + var(--xSpread)),400px) scale(1.1);opacity:0;}
 }
 
 /* Subway title */
-.subway-title{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-size:58px;margin-bottom:14px}
-.subway{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;color:white;font-weight:bold;font-family:Arial Black,sans-serif;box-shadow:0 4px 12px rgba(0,0,0,0.4)}
+.subway-title{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-size:58px;margin-bottom:14px
+}
+.subway{
+  display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;
+  color:white;font-weight:bold;font-family:Arial Black,sans-serif;box-shadow:0 4px 12px rgba(0,0,0,0.4)
+}
 .b{background:#FF6319}.u{background:#0039A6}.y{background:#FCCC0A;color:#000}.i{background:#6CBE45}
 .n1{background:#FF6319}.g{background:#A7A9AC;color:#000}.t{background:#996633}.i2{background:#6CBE45}
 .m{background:#B933AD}.e{background:#FCCC0A;color:#000}.n{background:#DA291C}.y2{background:#FF6319}.c{background:#0039A6}
 
-header p{color:var(--muted);font-size:22px;margin-top:12px;letter-spacing:0.4px;font-weight:500}
+header p{
+  color:var(--muted);
+  font-size:22px;
+  margin-top:12px;
+  letter-spacing:0.4px;
+  font-weight:500;
+}
 
-.hero{margin:60px auto;max-width:var(--max);display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px;align-items:center;padding:0 30px}
-.hero img{width:100%;border-radius:var(--radius);object-fit:cover;box-shadow:var(--shadow);transition:transform .3s ease}
+.hero{
+  margin:60px auto;
+  max-width:var(--max);
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+  gap:40px;
+  align-items:center;
+  padding:0 30px;
+}
+.hero img{
+  width:100%;
+  border-radius:var(--radius);
+  object-fit:cover;
+  box-shadow:var(--shadow);
+  transition:transform .3s ease;
+}
 .hero img:hover{transform:scale(1.03)}
-iframe{width:100%;max-width:500px;aspect-ratio:16/9;border:none;border-radius:var(--radius);box-shadow:var(--shadow);margin:0 auto;display:block}
+iframe{
+  width:100%;
+  max-width:500px;
+  aspect-ratio:16/9;
+  border:none;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin:0 auto;
+  display:block;
+}
 
 .caption{text-align:center;font-size:22px;font-weight:600;margin-top:16px;letter-spacing:0.3px}
 
@@ -65,13 +118,50 @@ iframe{width:100%;max-width:500px;aspect-ratio:16/9;border:none;border-radius:va
 }
 .cta a:hover,.linktree-btn:hover{opacity:0.9;transform:translateY(-2px)}
 
-footer{border-top:1px solid #1a1a1a;text-align:center;color:var(--muted);font-size:14px;padding:40px 0}
+footer{
+  border-top:1px solid #1a1a1a;
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+  padding:40px 0;
+}
 
-.modal{display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;padding:20px}
-.modal-content{max-width:700px;background:#111;border-radius:var(--radius);padding:40px;text-align:center;box-shadow:var(--shadow)}
-.modal-content h2{font-family:'Shortages',serif;font-size:30px;color:var(--accent);margin-bottom:16px}
+.modal{
+  display:none;
+  position:fixed;
+  z-index:999;
+  left:0;top:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+.modal-content{
+  max-width:700px;
+  background:#111;
+  border-radius:var(--radius);
+  padding:40px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+.modal-content h2{
+  font-family:'Shortages',serif;
+  font-size:30px;
+  color:var(--accent);
+  margin-bottom:16px;
+}
 .modal-content p{font-size:18px;line-height:1.7;color:var(--text)}
-.close{margin-top:24px;background:#333;border:none;color:#fff;font-size:16px;padding:10px 24px;border-radius:10px;cursor:pointer}
+.close{
+  margin-top:24px;
+  background:#333;
+  border:none;
+  color:#fff;
+  font-size:16px;
+  padding:10px 24px;
+  border-radius:10px;
+  cursor:pointer;
+}
 .close:hover{background:#444}
 </style>
 </head>
@@ -125,25 +215,19 @@ document.getElementById("aboutBtn").onclick=e=>{e.preventDefault();modal.style.d
 document.getElementById("closeModal").onclick=()=>{modal.style.display="none";}
 window.onclick=e=>{if(e.target==modal)modal.style.display="none";}
 
-/* Volcano-style upward and raining dollar effect */
+/* Upward burst then rain-down effect */
 const logo=document.getElementById("logo");
 setInterval(()=>{
-  for(let i=0;i<10;i++){
+  for(let i=0;i<12;i++){
     const dollar=document.createElement("div");
     dollar.classList.add("dollar");
     dollar.textContent="$";
-    const spread=(Math.random()-0.5)*120; // horizontal spread
-    const rise=60+Math.random()*40; // initial rise
-    const fall=200+Math.random()*300; // total fall distance
-    dollar.style.left=`calc(50% + ${spread}px)`;
-    dollar.style.animationDelay=`${Math.random()*0.3}s`;
-    dollar.style.setProperty("--xEnd",`${spread}px`);
-    dollar.style.setProperty("--yEnd",`${fall}px`);
-    dollar.style.top=`-${rise}px`;
+    const spread=(Math.random()-0.5)*200; // horizontal spread
+    dollar.style.setProperty("--xSpread",`${spread}px`);
     logo.appendChild(dollar);
     setTimeout(()=>dollar.remove(),3800);
   }
-},300);
+},250);
 </script>
 
 </body>
