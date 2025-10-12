@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Buying Time NYC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Space+Grotesk:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #0b0b0c;
@@ -40,7 +40,7 @@
       justify-content: center;
       gap: 8px;
       font-size: 58px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .subway {
       display: inline-flex;
@@ -51,27 +51,30 @@
       border-radius: 50%;
       color: white;
       font-weight: bold;
-      font-family: Arial, sans-serif;
+      font-family: Arial Black, sans-serif;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
-    .b { background: #FF6319; }    /* B line - orange */
-    .u { background: #6CBE45; }    /* G-ish green */
-    .y { background: #FCCC0A; color: #000; } /* Q line yellow */
+    .b { background: #FF6319; }
+    .u { background: #0039A6; }
+    .y { background: #FCCC0A; color: #000; }
     .i { background: #6CBE45; }
     .n1 { background: #FF6319; }
-    .g { background: #A7A9AC; color: #000; }  /* Grey */
-    .t { background: #2850AD; }    /* A/C/E - blue */
+    .g { background: #A7A9AC; color: #000; }
+    .t { background: #996633; }
     .i2 { background: #6CBE45; }
-    .m { background: #996633; }    /* Brown like M line */
+    .m { background: #B933AD; }
     .e { background: #FCCC0A; color: #000; }
-    .n { background: #FCCC0A; color: #000; }
+    .n { background: #DA291C; }
     .y2 { background: #FF6319; }
-    .c { background: #2850AD; }
+    .c { background: #0039A6; }
 
     header p {
       color: var(--muted);
-      font-size: 18px;
-      margin-top: 8px;
+      font-size: 20px;
+      margin-top: 12px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      letter-spacing: 0.3px;
     }
 
     .hero {
@@ -110,25 +113,31 @@
       margin-top: 16px;
       letter-spacing: 0.3px;
     }
+
     .cta {
       text-align: center;
-      margin: 60px 0;
+      margin: 60px 0 20px;
     }
-    .cta a {
+    .cta a,
+    .linktree-btn {
       display: inline-block;
       background: var(--accent);
       color: #fff;
       font-weight: 600;
-      letter-spacing: 0.5px;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 0.6px;
       padding: 14px 36px;
       border-radius: 12px;
       text-decoration: none;
       transition: all 0.25s ease;
+      margin: 10px;
     }
-    .cta a:hover {
+    .cta a:hover,
+    .linktree-btn:hover {
       opacity: 0.9;
       transform: translateY(-2px);
     }
+
     footer {
       border-top: 1px solid #1a1a1a;
       text-align: center;
@@ -209,4 +218,47 @@
 
   <section class="hero">
     <img src="CPREAL.jpeg" alt="Peter and Chance" />
-    <iframe src="https://www.youtube.com/embed/UL7cjy-yoSk" title="Buying Time NYC YouTube"></ifra
+    <iframe src="https://www.youtube.com/embed/UL7cjy-yoSk" title="Buying Time NYC YouTube"></iframe>
+    <img src="CPTOONPNG.png" alt="Cartoon Peter and Chance" />
+  </section>
+
+  <div class="caption">Meet the Creator and His Dog, Chance</div>
+
+  <div class="cta">
+    <a href="#" id="aboutBtn">About the Founder</a>
+    <a class="linktree-btn" href="https://linktr.ee/Buyingtimenyc" target="_blank">Follow the Movement</a>
+  </div>
+
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <h2>About the Founder</h2>
+      <p>
+        Buying Time NYC was built from the heart of hustle — turning vision into legacy.
+        Founded by <strong>Peter Crocitto</strong>, a one-handed drummer and creator from New York,
+        the brand stands for resilience and authenticity. With his husky <strong>Chance</strong> by his side,
+        Peter continues to redefine what it means to turn pain into progress and build something timeless.
+      </p>
+      <button class="close" id="closeModal">Close</button>
+    </div>
+  </div>
+
+  <footer>© 2025 Buying Time NYC. All rights reserved.</footer>
+
+  <script>
+    const modal = document.getElementById("aboutModal");
+    document.getElementById("aboutBtn").onclick = function(e) {
+      e.preventDefault();
+      modal.style.display = "flex";
+    };
+    document.getElementById("closeModal").onclick = function() {
+      modal.style.display = "none";
+    };
+    window.onclick = function(e) {
+      if (e.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+
+</body>
+</html>
