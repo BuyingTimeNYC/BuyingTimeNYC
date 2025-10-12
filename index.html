@@ -30,16 +30,16 @@ header{text-align:center;padding:60px 20px 30px;position:relative;overflow:hidde
 .logo-pulse img{width:100%;height:100%;object-fit:contain;}
 @keyframes throb{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
 
-/* Upward burst + rain-down animation */
+/* Upward burst + raining effect */
 .dollar{
   position:absolute;left:50%;top:0;
   font-size:22px;color:#00ff6a;opacity:0.9;pointer-events:none;
-  animation:moneyRain 3.5s linear forwards;
+  animation:moneyRain 3.8s linear forwards;
 }
 @keyframes moneyRain{
   0%{transform:translate(-50%,0) scale(1);opacity:1;}
-  20%{transform:translate(-50%,-80px) scale(1.1);opacity:1;}
-  100%{transform:translate(-50%,200px) scale(1.2);opacity:0;}
+  15%{transform:translate(-50%,-100px) scale(1.2);opacity:1;}
+  100%{transform:translate(-50%,400px) scale(1.1);opacity:0;}
 }
 
 /* Subway title */
@@ -119,28 +119,31 @@ footer{border-top:1px solid #1a1a1a;text-align:center;color:var(--muted);font-si
 <footer>© 2025 Buying Time NYC. All rights reserved.</footer>
 
 <script>
-/* modal logic */
+/* modal behavior */
 const modal=document.getElementById("aboutModal");
 document.getElementById("aboutBtn").onclick=e=>{e.preventDefault();modal.style.display="flex";}
 document.getElementById("closeModal").onclick=()=>{modal.style.display="none";}
 window.onclick=e=>{if(e.target==modal)modal.style.display="none";}
 
-/* Volcano-style money fountain */
+/* Volcano-style upward and raining dollar effect */
 const logo=document.getElementById("logo");
 setInterval(()=>{
-  for(let i=0;i<10;i++){ // how many $ each burst
+  for(let i=0;i<10;i++){
     const dollar=document.createElement("div");
     dollar.classList.add("dollar");
     dollar.textContent="$";
-    const spread=(Math.random()-0.5)*100; // horizontal spread
-    const fall=100+Math.random()*200;     // downward distance
+    const spread=(Math.random()-0.5)*120; // horizontal spread
+    const rise=60+Math.random()*40; // initial rise
+    const fall=200+Math.random()*300; // total fall distance
     dollar.style.left=`calc(50% + ${spread}px)`;
+    dollar.style.animationDelay=`${Math.random()*0.3}s`;
     dollar.style.setProperty("--xEnd",`${spread}px`);
     dollar.style.setProperty("--yEnd",`${fall}px`);
+    dollar.style.top=`-${rise}px`;
     logo.appendChild(dollar);
-    setTimeout(()=>dollar.remove(),3500);
+    setTimeout(()=>dollar.remove(),3800);
   }
-},250);
+},300);
 </script>
 
 </body>
