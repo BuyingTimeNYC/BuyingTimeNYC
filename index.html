@@ -1,87 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Buying Time NYC</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
-<style>
-:root {
-  --bg: #0b0b0c;
-  --text: #f4f4f4;
-  --muted: #a1a1a1;
-  --accent: #e01111;
-  --radius: 18px;
-  --shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
-  --max: 1200px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-header{text-align:center;padding:60px 20px 30px}
-header img{width:90px;height:90px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(224,17,17,0.5))}
-header h1{font-family:'Poppins',sans-serif;font-size:46px;letter-spacing:1px;margin-top:15px}
-header p{color:var(--muted);font-size:18px;margin-top:8px}
-.hero{margin:60px auto;max-width:var(--max);display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px;align-items:center;padding:0 30px}
-.hero img{width:100%;border-radius:var(--radius);object-fit:cover;box-shadow:var(--shadow);transition:transform .3s ease}
-.hero img:hover{transform:scale(1.03)}
-iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:var(--radius);box-shadow:var(--shadow)}
-.caption{text-align:center;font-size:22px;font-weight:600;margin-top:16px;letter-spacing:.3px}
-.cta{text-align:center;margin:60px 0}
-.cta a{display:inline-block;background:var(--accent);color:#fff;font-weight:600;letter-spacing:.5px;padding:14px 36px;border-radius:12px;text-decoration:none;transition:all .25s ease}
-.cta a:hover{opacity:.9;transform:translateY(-2px)}
-footer{border-top:1px solid #1a1a1a;text-align:center;color:var(--muted);font-size:14px;padding:40px 0}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buying Time NYC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0b0c;
+      --text: #f4f4f4;
+      --muted: #a1a1a1;
+      --accent: #e01111;
+      --radius: 18px;
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+      --max: 1200px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+    header img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(224,17,17,0.5));
+      margin-bottom: 20px;
+    }
+    .subway-title {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      font-size: 58px;
+      margin-bottom: 12px;
+    }
+    .subway {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      color: white;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .b { background: #FF6319; }    /* B line - orange */
+    .u { background: #6CBE45; }    /* G-ish green */
+    .y { background: #FCCC0A; color: #000; } /* Q line yellow */
+    .i { background: #6CBE45; }
+    .n1 { background: #FF6319; }
+    .g { background: #A7A9AC; color: #000; }  /* Grey */
+    .t { background: #2850AD; }    /* A/C/E - blue */
+    .i2 { background: #6CBE45; }
+    .m { background: #996633; }    /* Brown like M line */
+    .e { background: #FCCC0A; color: #000; }
+    .n { background: #FCCC0A; color: #000; }
+    .y2 { background: #FF6319; }
+    .c { background: #2850AD; }
 
-/* Modal */
-.modal{display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;padding:20px}
-.modal-content{max-width:700px;background:#111;border-radius:var(--radius);padding:40px;text-align:center;box-shadow:var(--shadow)}
-.modal-content h2{font-family:'Poppins',sans-serif;font-size:30px;color:var(--accent);margin-bottom:16px}
-.modal-content p{font-size:18px;line-height:1.7;color:var(--text)}
-.close{margin-top:24px;background:#333;border:none;color:#fff;font-size:16px;padding:10px 24px;border-radius:10px;cursor:pointer}
-.close:hover{background:#444}
-</style>
+    header p {
+      color: var(--muted);
+      font-size: 18px;
+      margin-top: 8px;
+    }
+
+    .hero {
+      margin: 60px auto;
+      max-width: var(--max);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 40px;
+      align-items: center;
+      padding: 0 30px;
+    }
+    .hero img {
+      width: 100%;
+      border-radius: var(--radius);
+      object-fit: cover;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+    .hero img:hover {
+      transform: scale(1.03);
+    }
+    iframe {
+      width: 100%;
+      max-width: 500px;
+      aspect-ratio: 16 / 9;
+      border: none;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 0 auto;
+      display: block;
+    }
+    .caption {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 600;
+      margin-top: 16px;
+      letter-spacing: 0.3px;
+    }
+    .cta {
+      text-align: center;
+      margin: 60px 0;
+    }
+    .cta a {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 14px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .cta a:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+    footer {
+      border-top: 1px solid #1a1a1a;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 40px 0;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-content {
+      max-width: 700px;
+      background: #111;
+      border-radius: var(--radius);
+      padding: 40px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .modal-content h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 30px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .modal-content p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .close {
+      margin-top: 24px;
+      background: #333;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 24px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .close:hover {
+      background: #444;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <img src="red%20logo%20btnyc.png" alt="Buying Time NYC Logo" />
-  <h1>BUYING TIME NYC</h1>
-  <p>Where vision meets hustle, and time is the ultimate currency.</p>
-</header>
+  <header>
+    <img src="red%20logo%20btnyc.png" alt="Buying Time NYC Logo" />
+    <h1 class="subway-title">
+      <span class="subway b">B</span>
+      <span class="subway u">U</span>
+      <span class="subway y">Y</span>
+      <span class="subway i">I</span>
+      <span class="subway n1">N</span>
+      <span class="subway g">G</span>
+      <span class="subway t">T</span>
+      <span class="subway i2">I</span>
+      <span class="subway m">M</span>
+      <span class="subway e">E</span>
+      <span class="subway n">N</span>
+      <span class="subway y2">Y</span>
+      <span class="subway c">C</span>
+    </h1>
+    <p>Where vision meets hustle, and time is the ultimate currency.</p>
+  </header>
 
-<section class="hero">
-  <img src="CPREAL.jpeg" alt="Peter and Chance" />
-  <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Buying Time NYC YouTube"></iframe>
-  <img src="CPTOONPNG.png" alt="Cartoon Peter and Chance" />
-</section>
-
-<div class="caption">Meet the Creator and His Dog, Chance</div>
-
-<div class="cta">
-  <a href="#" id="aboutBtn">About the Founder</a>
-</div>
-
-<!-- Hidden modal -->
-<div id="aboutModal" class="modal">
-  <div class="modal-content">
-    <h2>About the Founder</h2>
-    <p>
-      Buying Time NYC was built from the heart of hustle — turning vision into legacy.
-      Founded by <strong>Peter Crocitto</strong>, a one-handed drummer and creator from New York,
-      the brand stands for resilience and authenticity. With his husky <strong>Chance</strong> by his side,
-      Peter continues to redefine what it means to turn pain into progress and build something timeless.
-    </p>
-    <button class="close" id="closeModal">Close</button>
-  </div>
-</div>
-
-<footer>© 2025 Buying Time NYC. All rights reserved.</footer>
-
-<script>
-const modal=document.getElementById("aboutModal");
-document.getElementById("aboutBtn").onclick=function(e){e.preventDefault();modal.style.display="flex";}
-document.getElementById("closeModal").onclick=function(){modal.style.display="none";}
-window.onclick=function(e){if(e.target==modal){modal.style.display="none";}}
-</script>
-
-</body>
-</html>
+  <section class="hero">
+    <img src="CPREAL.jpeg" alt="Peter and Chance" />
+    <iframe src="https://www.youtube.com/embed/UL7cjy-yoSk" title="Buying Time NYC YouTube"></ifra
