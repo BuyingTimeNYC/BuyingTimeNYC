@@ -22,4 +22,66 @@ header img{width:90px;height:90px;object-fit:contain;filter:drop-shadow(0 0 10px
 header h1{font-family:'Poppins',sans-serif;font-size:46px;letter-spacing:1px;margin-top:15px}
 header p{color:var(--muted);font-size:18px;margin-top:8px}
 .hero{margin:60px auto;max-width:var(--max);display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px;align-items:center;padding:0 30px}
-.hero img{width:100%;border-radius:var(--radius);object-fit:c
+.hero img{width:100%;border-radius:var(--radius);object-fit:cover;box-shadow:var(--shadow);transition:transform .3s ease}
+.hero img:hover{transform:scale(1.03)}
+iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:var(--radius);box-shadow:var(--shadow)}
+.caption{text-align:center;font-size:22px;font-weight:600;margin-top:16px;letter-spacing:.3px}
+.cta{text-align:center;margin:60px 0}
+.cta a{display:inline-block;background:var(--accent);color:#fff;font-weight:600;letter-spacing:.5px;padding:14px 36px;border-radius:12px;text-decoration:none;transition:all .25s ease}
+.cta a:hover{opacity:.9;transform:translateY(-2px)}
+footer{border-top:1px solid #1a1a1a;text-align:center;color:var(--muted);font-size:14px;padding:40px 0}
+
+/* Modal */
+.modal{display:none;position:fixed;z-index:999;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;padding:20px}
+.modal-content{max-width:700px;background:#111;border-radius:var(--radius);padding:40px;text-align:center;box-shadow:var(--shadow)}
+.modal-content h2{font-family:'Poppins',sans-serif;font-size:30px;color:var(--accent);margin-bottom:16px}
+.modal-content p{font-size:18px;line-height:1.7;color:var(--text)}
+.close{margin-top:24px;background:#333;border:none;color:#fff;font-size:16px;padding:10px 24px;border-radius:10px;cursor:pointer}
+.close:hover{background:#444}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="red%20logo%20btnyc.png" alt="Buying Time NYC Logo" />
+  <h1>BUYING TIME NYC</h1>
+  <p>Where vision meets hustle, and time is the ultimate currency.</p>
+</header>
+
+<section class="hero">
+  <img src="CPREAL.jpeg" alt="Peter and Chance" />
+  <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Buying Time NYC YouTube"></iframe>
+  <img src="CPTOONPNG.png" alt="Cartoon Peter and Chance" />
+</section>
+
+<div class="caption">Meet the Creator and His Dog, Chance</div>
+
+<div class="cta">
+  <a href="#" id="aboutBtn">About the Founder</a>
+</div>
+
+<!-- Hidden modal -->
+<div id="aboutModal" class="modal">
+  <div class="modal-content">
+    <h2>About the Founder</h2>
+    <p>
+      Buying Time NYC was built from the heart of hustle — turning vision into legacy.
+      Founded by <strong>Peter Crocitto</strong>, a one-handed drummer and creator from New York,
+      the brand stands for resilience and authenticity. With his husky <strong>Chance</strong> by his side,
+      Peter continues to redefine what it means to turn pain into progress and build something timeless.
+    </p>
+    <button class="close" id="closeModal">Close</button>
+  </div>
+</div>
+
+<footer>© 2025 Buying Time NYC. All rights reserved.</footer>
+
+<script>
+const modal=document.getElementById("aboutModal");
+document.getElementById("aboutBtn").onclick=function(e){e.preventDefault();modal.style.display="flex";}
+document.getElementById("closeModal").onclick=function(){modal.style.display="none";}
+window.onclick=function(e){if(e.target==modal){modal.style.display="none";}}
+</script>
+
+</body>
+</html>
