@@ -50,6 +50,10 @@
       margin: 20px 0 10px;
     }
 
+    p {
+      font-size: 16px;
+    }
+
     .money-container {
       position: absolute;
       top: 0;
@@ -93,7 +97,7 @@
   <div class="money-container" id="money-container"></div>
 
   <header>
-    <img src="red%20logo%20btnyc.png" alt="Buying Time NYC Logo" class="logo" />
+    <img src="redlogobtnyc.png" alt="Buying Time NYC Logo" class="logo" />
     <img src="CPREAL.jpeg" alt="Petey and Chance" class="photo-left" />
     <img src="CPTOONPNG.png" alt="Petey Cartoon" class="photo-right" />
     <h1>Where vision meets hustle and time is the ultimate currency</h1>
@@ -106,14 +110,14 @@
   <script>
     const container = document.getElementById("money-container");
     const heartX = window.innerWidth / 2;
-    const heartY = 140; // top of heart logo
+    const heartY = 140; // Approx top of the heart logo
 
     function createMoney() {
       const money = document.createElement("div");
       money.classList.add("money");
       money.innerText = "$";
 
-      const angle = (Math.random() - 0.5) * Math.PI;
+      const angle = (Math.random() - 0.5) * Math.PI; // Arch spray
       const radius = Math.random() * 300 + 100;
 
       const x = heartX + Math.cos(angle) * radius;
@@ -132,4 +136,3 @@
   </script>
 </body>
 </html>
-
