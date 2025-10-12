@@ -1,39 +1,126 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Buying Time NYC</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    :root{
-      --bg:#0b0b0c;
-      --card:#131316;
-      --muted:#8b8d93;
-      --text:#e9e9ee;
-      --accent:#e01111;
-      --accent-2:#111214;
-      --radius:18px;
-      --shadow:0 8px 30px rgba(0,0,0,.35);
-      --max:1100px;
+    :root {
+      --bg1: #0e0e0f;
+      --bg2: #1a1a1c;
+      --accent: #e01111;
+      --text: #f2f2f2;
+      --muted: #b8b8b8;
+      --shadow: 0 10px 30px rgba(0,0,0,0.4);
+      --radius: 20px;
+      --max: 1100px;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      background: radial-gradient(1200px 600px at 10% -10%, #17171b 0%, transparent 60%),
-                  radial-gradient(1000px 500px at 110% 10%, #1a1a1f 0%, transparent 55%),
-                  var(--bg);
-      color:var(--text);
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      line-height:1.45;
-      overflow-x:hidden;
+    * {box-sizing: border-box; margin: 0; padding: 0;}
+    body {
+      background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
     }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--max);margin:0 auto;padding:20px}
-    header{
-      display:flex;align-items:center;justify-content:space-between;
+    header {
+      text-align: center;
+      padding: 40px 20px 10px;
+    }
+    header img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(224,17,17,0.5));
+    }
+    header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 40px;
+      font-weight: 700;
+      margin-top: 15px;
+      letter-spacing: 1px;
+    }
+    header p {
+      font-size: 18px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .content {
+      max-width: var(--max);
+      margin: 60px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .content img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .content img:hover { transform: scale(1.03); }
+    iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: none;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .cta a {
+      display: inline-block;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+    .cta a:hover {
+      background: #ff2a2a;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 60px 0 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="red-logo-btnyc.png" alt="Buying Time NYC Logo" />
+    <h1>BUYING TIME NYC</h1>
+    <p>Where vision meets hustle, and time is the ultimate currency.</p>
+  </header>
+
+  <section class="content">
+    <img src="CPREAL.jpeg" alt="Peter and Chance" />
+    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Buying Time NYC YouTube"></iframe>
+    <img src="CPTOONPNG.png" alt="Cartoon Peter and Chance" />
+  </section>
+
+  <div class="cta">
+    <a href="shop.html">Visit the Shop</a>
+  </div>
+
+  <footer>
+    &copy; 2025 Buying Time NYC. All rights reserved.
+  </footer>
+</body>
+</html>
       padding:16px 0;
     }
     .brand{display:flex;align-items:center;gap:14px}
