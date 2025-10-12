@@ -2,102 +2,141 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Buying Time NYC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #000;
-      --fg: #f5f5f5;
-      --muted: #999;
+      --bg: #0a0a0a;
+      --card: #121212;
+      --text: #f4f4f4;
+      --muted: #9d9d9d;
       --accent: #e01111;
       --radius: 18px;
-      --shadow: 0 8px 24px rgba(0,0,0,0.5);
+      --shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+      --max: 1200px;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      background:var(--bg);
-      color:var(--fg);
-      font-family:'Inter',sans-serif;
-      -webkit-font-smoothing:antialiased;
-      overflow-x:hidden;
+    * {box-sizing: border-box; margin: 0; padding: 0;}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    header{
-      text-align:center;
-      padding:50px 20px 20px;
+    header {
+      text-align: center;
+      padding: 60px 20px 20px;
     }
-    header img{
-      width:100px;
-      height:100px;
-      object-fit:contain;
+    header img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(224,17,17,0.4));
     }
-    header h1{
-      font-family:'Poppins',sans-serif;
-      font-size:48px;
-      letter-spacing:2px;
-      margin-top:15px;
+    header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 46px;
+      letter-spacing: 2px;
+      margin-top: 15px;
     }
-    header p{
-      color:var(--muted);
-      font-size:18px;
-      margin-top:6px;
-    }
-
-    .hero{
-      margin:70px auto;
-      max-width:1200px;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-      gap:40px;
-      padding:0 30px;
-      align-items:center;
-    }
-    .hero img{
-      width:100%;
-      border-radius:var(--radius);
-      object-fit:cover;
-      box-shadow:var(--shadow);
-      transition:transform .3s ease;
-    }
-    .hero img:hover{transform:scale(1.03)}
-
-    iframe{
-      width:100%;
-      aspect-ratio:16/9;
-      border:none;
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
+    header p {
+      color: var(--muted);
+      font-size: 18px;
+      margin-top: 8px;
     }
 
-    .cta{
-      text-align:center;
-      margin:60px 0;
+    /* HERO */
+    .hero {
+      margin: 60px auto;
+      max-width: var(--max);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 40px;
+      align-items: center;
+      padding: 0 30px;
     }
-    .cta a{
-      display:inline-block;
-      background:var(--accent);
-      color:#fff;
-      font-weight:600;
-      letter-spacing:.5px;
-      padding:14px 36px;
-      border-radius:12px;
-      text-decoration:none;
-      transition:all .25s ease;
+    .hero img {
+      width: 100%;
+      border-radius: var(--radius);
+      object-fit: cover;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
     }
-    .cta a:hover{opacity:.85;transform:translateY(-2px)}
+    .hero img:hover { transform: scale(1.03); }
+    iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: none;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
 
-    footer{
-      border-top:1px solid #1c1c1c;
-      text-align:center;
-      color:var(--muted);
-      font-size:14px;
-      padding:40px 0;
+    /* CTA */
+    .cta {
+      text-align: center;
+      margin: 70px 0 50px;
+    }
+    .cta a {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 14px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .cta a:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    /* ABOUT */
+    .about {
+      background: var(--card);
+      max-width: var(--max);
+      margin: 0 auto 80px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .about h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      color: var(--accent);
+    }
+    .about p {
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+    .about img {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-top: 15px;
+      border: 3px solid var(--accent);
+      box-shadow: 0 4px 20px rgba(224,17,17,0.3);
+    }
+
+    footer {
+      border-top: 1px solid #1a1a1a;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 50px 0;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <img src="red-logo-btnyc.png" alt="Buying Time NYC Logo" />
+    <img src="red logo btnyc.png" alt="Buying Time NYC Logo" />
     <h1>BUYING TIME NYC</h1>
     <p>Where vision meets hustle, and time is the ultimate currency.</p>
   </header>
@@ -109,11 +148,24 @@
   </section>
 
   <div class="cta">
-    <a href="shop.html">ENTER SHOP</a>
+    <a href="#about">About the Founder</a>
   </div>
+
+  <section id="about" class="about">
+    <h2>About the Founder</h2>
+    <p>
+      Buying Time NYC was built from the heart of hustle — the spirit that turns vision into legacy. 
+      Founded by <strong>Peter Crocitto</strong>, a one-handed drummer and creative from New York, 
+      the brand stands for resilience, authenticity, and the art of turning pain into power. 
+      Alongside his loyal husky <strong>Chance</strong>, Peter continues to redefine what it means 
+      to build time into something timeless — where every struggle becomes fuel for creation.
+    </p>
+    <img src="CPREAL.jpeg" alt="Peter and Chance Portrait" />
+  </section>
 
   <footer>
     &copy; 2025 Buying Time NYC. All rights reserved.
   </footer>
+
 </body>
 </html>
