@@ -29,7 +29,7 @@
     .photo-left,
     .photo-right {
       position: absolute;
-      top: 100px;
+      top: 140px;
       width: 160px;
       height: auto;
       border-radius: 12px;
@@ -48,14 +48,12 @@
       font-size: 28px;
       font-family: 'Shortages', serif;
       margin: 20px 0 10px;
-    }
-
-    p {
-      font-size: 16px;
+      position: relative;
+      z-index: 5;
     }
 
     .money-container {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -70,13 +68,13 @@
       color: greenyellow;
       font-size: 28px;
       opacity: 0.7;
-      animation: floatMoney 6s linear infinite;
+      animation: floatMoney 5.5s linear forwards;
     }
 
     @keyframes floatMoney {
       0% {
         transform: translateY(0) scale(1);
-        opacity: 0.7;
+        opacity: 1;
       }
       100% {
         transform: translateY(-100vh) scale(1.2);
@@ -97,7 +95,7 @@
   <div class="money-container" id="money-container"></div>
 
   <header>
-    <img src="redlogobtnyc.png" alt="Buying Time NYC Logo" class="logo" />
+    <img src="red%20logo%20btnyc.png" alt="Buying Time NYC Logo" class="logo" />
     <img src="CPREAL.jpeg" alt="Petey and Chance" class="photo-left" />
     <img src="CPTOONPNG.png" alt="Petey Cartoon" class="photo-right" />
     <h1>Where vision meets hustle and time is the ultimate currency</h1>
@@ -110,29 +108,30 @@
   <script>
     const container = document.getElementById("money-container");
     const heartX = window.innerWidth / 2;
-    const heartY = 140; // Approx top of the heart logo
+    const heartY = 160; // Top of heart logo
 
     function createMoney() {
       const money = document.createElement("div");
       money.classList.add("money");
       money.innerText = "$";
 
-      const angle = (Math.random() - 0.5) * Math.PI; // Arch spray
-      const radius = Math.random() * 300 + 100;
+      // Volcano spread
+      const angle = (Math.random() * Math.PI) - Math.PI / 2; // Spread upward in arc
+      const radius = Math.random() * 400 + 100;
 
       const x = heartX + Math.cos(angle) * radius;
-      const y = heartY + Math.sin(angle) * radius;
+      const y = heartY - Math.abs(Math.sin(angle)) * radius;
 
       money.style.left = `${x}px`;
-      money.style.top = `${y}px`;
+      money.style.top = `${heartY}px`;
       container.appendChild(money);
 
       setTimeout(() => {
         container.removeChild(money);
-      }, 6000);
+      }, 5500);
     }
 
-    setInterval(createMoney, 120);
+    setInterval(createMoney, 100);
   </script>
 </body>
 </html>
