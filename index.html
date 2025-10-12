@@ -45,7 +45,7 @@ header{text-align:center;padding:60px 20px 30px;position:relative;overflow:hidde
   50%{transform:scale(1.15)}
 }
 
-/* Fountain rain animation */
+/* Fountain burst + rain animation */
 .dollar{
   position:absolute;
   left:50%;
@@ -56,14 +56,14 @@ header{text-align:center;padding:60px 20px 30px;position:relative;overflow:hidde
   animation:moneyRain 3.8s ease-in-out forwards;
 }
 @keyframes moneyRain{
-  0%{transform:translate(-50%,-20px) scale(1);opacity:1;}
+  0%{transform:translate(-50%,0) scale(1);opacity:1;}
   20%{transform:translate(calc(-50% + var(--xSpread)),-150px) scale(1.2);opacity:1;}
   100%{transform:translate(calc(-50% + var(--xSpread)),400px) scale(1.1);opacity:0;}
 }
 
 /* Subway title */
 .subway-title{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-size:58px;margin-bottom:14px
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-size:58px;margin-bottom:14px;
 }
 .subway{
   display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;
@@ -209,13 +209,13 @@ footer{
 <footer>© 2025 Buying Time NYC. All rights reserved.</footer>
 
 <script>
-/* modal behavior */
+/* Modal logic */
 const modal=document.getElementById("aboutModal");
 document.getElementById("aboutBtn").onclick=e=>{e.preventDefault();modal.style.display="flex";}
 document.getElementById("closeModal").onclick=()=>{modal.style.display="none";}
 window.onclick=e=>{if(e.target==modal)modal.style.display="none";}
 
-/* Upward burst then rain-down effect */
+/* Volcano-style upward and raining dollar effect */
 const logo=document.getElementById("logo");
 setInterval(()=>{
   for(let i=0;i<12;i++){
@@ -224,10 +224,11 @@ setInterval(()=>{
     dollar.textContent="$";
     const spread=(Math.random()-0.5)*200; // horizontal spread
     dollar.style.setProperty("--xSpread",`${spread}px`);
+    dollar.style.animationDelay=`${Math.random()*0.3}s`;
     logo.appendChild(dollar);
     setTimeout(()=>dollar.remove(),3800);
   }
-},250);
+},300);
 </script>
 
 </body>
