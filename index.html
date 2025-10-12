@@ -38,14 +38,14 @@
       position: relative;
     }
 
-    /* Pulsing heart logo with floating money signs */
+    /* Pulsing heart-money logo with floating dollar signs */
     .logo-pulse {
       position: relative;
       width: 100px;
       height: 100px;
       margin: 0 auto 20px;
-      animation: throb 1.2s ease-in-out infinite;
-      filter: drop-shadow(0 0 10px rgba(224,17,17,0.5));
+      animation: throb 1.3s ease-in-out infinite;
+      filter: drop-shadow(0 0 12px rgba(224,17,17,0.55));
     }
 
     .logo-pulse img {
@@ -59,14 +59,14 @@
       content: '$';
       position: absolute;
       left: 50%;
-      font-size: 28px;
+      font-size: 30px;
       color: #00ff6a;
-      animation: moneyFloat 2.4s ease-out infinite;
+      animation: moneyFloat 2.5s ease-out infinite;
       opacity: 0;
     }
 
     .logo-pulse::after {
-      animation-delay: 1.2s;
+      animation-delay: 1.25s;
     }
 
     @keyframes throb {
@@ -78,7 +78,7 @@
       0% { transform: translate(-50%, 0) scale(0.8); opacity: 0; }
       20% { opacity: 1; }
       60% { transform: translate(-50%, -80px) scale(1.1); opacity: 1; }
-      100% { transform: translate(-50%, -120px) scale(1.2); opacity: 0; }
+      100% { transform: translate(-50%, -120px) scale(1.25); opacity: 0; }
     }
 
     .subway-title {
@@ -246,9 +246,7 @@
       cursor: pointer;
     }
 
-    .close:hover {
-      background: #444;
-    }
+    .close:hover { background: #444; }
   </style>
 </head>
 <body>
