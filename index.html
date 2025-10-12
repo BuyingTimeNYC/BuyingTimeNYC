@@ -1,100 +1,131 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Buying Time NYC</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 0;
+    :root{
+      --bg:#0b0b0c;
+      --card:#131316;
+      --muted:#8b8d93;
+      --text:#e9e9ee;
+      --accent:#e01111;
+      --accent-2:#111214;
+      --radius:18px;
+      --shadow:0 8px 30px rgba(0,0,0,.35);
+      --max:1100px;
     }
-    header img {
-      max-width: 300px;
-      margin-top: 20px;
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      background: radial-gradient(1200px 600px at 10% -10%, #17171b 0%, transparent 60%),
+                  radial-gradient(1000px 500px at 110% 10%, #1a1a1f 0%, transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.45;
+      overflow-x:hidden;
     }
-    h1 {
-      font-size: 2.5rem;
-      margin: 0.5em 0 0.2em;
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:20px}
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:16px 0;
     }
-    h3 {
-      font-weight: 300;
-      font-style: italic;
-      color: #ccc;
-      margin-bottom: 2em;
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{width:50px;height:50px;object-fit:contain}
+    .brand-title{
+      font-family:"Bebas Neue",sans-serif;
+      letter-spacing:1px;font-size:34px;line-height:1;
     }
-    section {
-      padding: 1em;
+    .hero{
+      margin-top:40px;
+      display:grid;gap:32px;
+      grid-template-columns:1.1fr .9fr;
+      align-items:center;
     }
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      max-width: 90%;
-      margin: 0 auto 2em;
+    @media (max-width:900px){.hero{grid-template-columns:1fr}}
+    .hero-content h1{
+      font-family:"Bebas Neue",sans-serif;
+      font-size:64px;
+      letter-spacing:1.5px;
+      color:var(--accent);
+      line-height:1.1;
     }
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+    .hero-content p{
+      color:var(--text);
+      font-size:18px;
+      margin:20px 0;
+      max-width:500px;
     }
-    .img-row {
-      display: flex;
-      justify-content: center;
-      gap: 2em;
-      flex-wrap: wrap;
-      margin-bottom: 2em;
+    .hero-content .btn{
+      display:inline-block;
+      padding:12px 24px;
+      border-radius:12px;
+      background:linear-gradient(180deg,var(--accent) 0%,#9d0909 100%);
+      color:white;
+      font-weight:600;
+      border:none;
+      box-shadow:var(--shadow);
+      transition:.25s;
     }
-    .img-row img {
-      max-width: 250px;
-      border-radius: 15px;
+    .hero-content .btn:hover{transform:translateY(-2px);opacity:.9}
+    .media{
+      display:flex;flex-direction:column;align-items:center;gap:20px;
     }
-    .linktree-button {
-      background: #e60000;
-      color: #fff;
-      padding: 0.75em 1.5em;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 1em;
+    .media img{
+      width:100%;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      object-fit:cover;
+    }
+    iframe{
+      width:100%;
+      aspect-ratio:16/9;
+      border:none;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    footer{
+      text-align:center;
+      margin-top:60px;
+      padding:40px 0;
+      color:var(--muted);
+      font-size:14px;
+      border-top:1px solid #1f1f23;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="red logo btnyc.png" alt="Buying Time NYC Logo" />
-    <h1>BUYING TIME NYC</h1>
-    <h3>Where vision meets hustle and time is the ultimate currency.</h3>
-  </header>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <img src="red-logo-btnyc.png" alt="Buying Time NYC logo" />
+        <span class="brand-title">BUYING TIME NYC</span>
+      </div>
+    </header>
 
-  <section class="video">
-    <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/doOwAhH_mbA" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </section>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Where vision meets hustle, and time is the ultimate currency</h1>
+        <p>Building a movement that blends art, fashion, and ambition — powered by passion, grit, and legacy. Buying Time NYC stands for turning moments into value.</p>
+        <a href="https://linktr.ee/Buyingtimenyc" target="_blank" class="btn">Explore More</a>
+      </div>
 
-  <section>
-    <h2>Meet Petey & Chance</h2>
-    <div class="img-row">
-      <img src="CPTOONPNG.png" alt="Cartoon of Petey and Chance" />
-      <img src="CPREAL.jpeg" alt="Real photo of Petey and Chance" />
-    </div>
-    <p>Petey is the heart behind Buying Time NYC — artist, drummer, survivor. Every beat, every item, every post is part of the comeback. This brand is about turning pain into power, and hustle into legacy.</p>
-    <a class="linktree-button" href="https://linktr.ee/Buyingtimenyc" target="_blank">Explore the Movement</a>
-  </section>
+      <div class="media">
+        <img src="CPREAL.jpeg" alt="Peter Crocitto and Chance" />
+        <img src="CPTOONPNG.png" alt="Cartoon version of Peter and Chance" />
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Buying Time NYC YouTube"></iframe>
+      </div>
+    </section>
 
-  <section>
-    <h2>Coming Soon: The Shop</h2>
-    <p>Vintage collectibles, deadstock fashion, one-of-one art pieces, and more. Stay tuned.</p>
-  </section>
+    <footer>
+      &copy; 2025 Buying Time NYC — Where inspiration meets hustle. All rights reserved.
+    </footer>
+  </div>
 </body>
 </html>
