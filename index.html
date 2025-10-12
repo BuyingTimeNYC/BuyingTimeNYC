@@ -1,235 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Buying Time NYC</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buying Time NYC</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
 
-<style>
-@font-face {
-  font-family: 'Shortages';
-  src: url('Shortages.ttf') format('truetype');
-}
+    header {
+      position: relative;
+      text-align: center;
+      padding: 30px 0;
+    }
 
-:root {
-  --bg:#0b0b0c;
-  --text:#f4f4f4;
-  --muted:#a1a1a1;
-  --accent:#e01111;
-  --radius:18px;
-  --shadow:0 8px 30px rgba(0,0,0,0.45);
-  --max:1200px;
-}
+    .logo {
+      width: 120px;
+      z-index: 5;
+      position: relative;
+    }
 
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:'Shortages',serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    .photo-left,
+    .photo-right {
+      position: absolute;
+      top: 100px;
+      width: 160px;
+      height: auto;
+      border-radius: 12px;
+      z-index: 5;
+    }
 
-header{text-align:center;padding:60px 20px 30px;position:relative;overflow:hidden}
+    .photo-left {
+      left: 20px;
+    }
 
-/* Pulsing heart logo */
-.logo-pulse{
-  position:relative;
-  width:120px;
-  height:120px;
-  margin:0 auto 20px;
-  animation:throb 1.3s ease-in-out infinite;
-  filter:drop-shadow(0 0 12px rgba(224,17,17,0.6));
-}
-.logo-pulse img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
-@keyframes throb{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.15)}
-}
+    .photo-right {
+      right: 20px;
+    }
 
-/* Fountain burst + rain animation */
-.dollar{
-  position:absolute;
-  left:50%;
-  font-size:22px;
-  color:#00ff6a;
-  opacity:0.9;
-  pointer-events:none;
-  animation:moneyRain 3.8s ease-in-out forwards;
-}
-@keyframes moneyRain{
-  0%{transform:translate(-50%,0) scale(1);opacity:1;}
-  20%{transform:translate(calc(-50% + var(--xSpread)),-150px) scale(1.2);opacity:1;}
-  100%{transform:translate(calc(-50% + var(--xSpread)),400px) scale(1.1);opacity:0;}
-}
+    h1 {
+      font-size: 28px;
+      font-family: 'Shortages', serif;
+      margin: 20px 0 10px;
+    }
 
-/* Subway title */
-.subway-title{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-size:58px;margin-bottom:14px;
-}
-.subway{
-  display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;
-  color:white;font-weight:bold;font-family:Arial Black,sans-serif;box-shadow:0 4px 12px rgba(0,0,0,0.4)
-}
-.b{background:#FF6319}.u{background:#0039A6}.y{background:#FCCC0A;color:#000}.i{background:#6CBE45}
-.n1{background:#FF6319}.g{background:#A7A9AC;color:#000}.t{background:#996633}.i2{background:#6CBE45}
-.m{background:#B933AD}.e{background:#FCCC0A;color:#000}.n{background:#DA291C}.y2{background:#FF6319}.c{background:#0039A6}
+    .money-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
 
-header p{
-  color:var(--muted);
-  font-size:22px;
-  margin-top:12px;
-  letter-spacing:0.4px;
-  font-weight:500;
-}
+    .money {
+      position: absolute;
+      color: greenyellow;
+      font-size: 28px;
+      opacity: 0.7;
+      animation: floatMoney 6s linear infinite;
+    }
 
-.hero{
-  margin:60px auto;
-  max-width:var(--max);
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-  gap:40px;
-  align-items:center;
-  padding:0 30px;
-}
-.hero img{
-  width:100%;
-  border-radius:var(--radius);
-  object-fit:cover;
-  box-shadow:var(--shadow);
-  transition:transform .3s ease;
-}
-.hero img:hover{transform:scale(1.03)}
-iframe{
-  width:100%;
-  max-width:500px;
-  aspect-ratio:16/9;
-  border:none;
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  margin:0 auto;
-  display:block;
-}
+    @keyframes floatMoney {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.2);
+        opacity: 0;
+      }
+    }
 
-.caption{text-align:center;font-size:22px;font-weight:600;margin-top:16px;letter-spacing:0.3px}
-
-.cta{text-align:center;margin:60px 0 20px}
-.cta a,.linktree-btn{
-  display:inline-block;background:var(--accent);color:#fff;font-weight:600;letter-spacing:0.6px;
-  padding:14px 36px;border-radius:12px;text-decoration:none;transition:all .25s ease;margin:10px;
-}
-.cta a:hover,.linktree-btn:hover{opacity:0.9;transform:translateY(-2px)}
-
-footer{
-  border-top:1px solid #1a1a1a;
-  text-align:center;
-  color:var(--muted);
-  font-size:14px;
-  padding:40px 0;
-}
-
-.modal{
-  display:none;
-  position:fixed;
-  z-index:999;
-  left:0;top:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,0.9);
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-}
-.modal-content{
-  max-width:700px;
-  background:#111;
-  border-radius:var(--radius);
-  padding:40px;
-  text-align:center;
-  box-shadow:var(--shadow);
-}
-.modal-content h2{
-  font-family:'Shortages',serif;
-  font-size:30px;
-  color:var(--accent);
-  margin-bottom:16px;
-}
-.modal-content p{font-size:18px;line-height:1.7;color:var(--text)}
-.close{
-  margin-top:24px;
-  background:#333;
-  border:none;
-  color:#fff;
-  font-size:16px;
-  padding:10px 24px;
-  border-radius:10px;
-  cursor:pointer;
-}
-.close:hover{background:#444}
-</style>
+    iframe {
+      margin-top: 30px;
+      z-index: 5;
+      position: relative;
+      max-width: 100%;
+      border: none;
+    }
+  </style>
 </head>
 <body>
+  <div class="money-container" id="money-container"></div>
 
-<header>
-  <div class="logo-pulse" id="logo">
-    <img src="red logo btnyc.png" alt="Buying Time NYC Logo">
+  <header>
+    <img src="red%20logo%20btnyc.png" alt="Buying Time NYC Logo" class="logo" />
+    <img src="CPREAL.jpeg" alt="Petey and Chance" class="photo-left" />
+    <img src="CPTOONPNG.png" alt="Petey Cartoon" class="photo-right" />
+    <h1>Where vision meets hustle and time is the ultimate currency</h1>
+  </header>
+
+  <div style="text-align:center;">
+    <iframe width="300" height="170" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
   </div>
 
-  <h1 class="subway-title">
-    <span class="subway b">B</span><span class="subway u">U</span><span class="subway y">Y</span><span class="subway i">I</span>
-    <span class="subway n1">N</span><span class="subway g">G</span><span class="subway t">T</span><span class="subway i2">I</span>
-    <span class="subway m">M</span><span class="subway e">E</span><span class="subway n">N</span><span class="subway y2">Y</span><span class="subway c">C</span>
-  </h1>
-  <p>Where inspiration meets hustle, and time is the ultimate currency.</p>
-</header>
+  <script>
+    const container = document.getElementById("money-container");
+    const heartX = window.innerWidth / 2;
+    const heartY = 140; // top of heart logo
 
-<section class="hero">
-  <img src="CPREAL.jpeg" alt="Peter and Chance">
-  <iframe src="https://www.youtube.com/embed/BF0PsUYEm3A" title="Buying Time NYC YouTube"></iframe>
-  <img src="CPTOONPNG.png" alt="Cartoon Peter and Chance">
-</section>
+    function createMoney() {
+      const money = document.createElement("div");
+      money.classList.add("money");
+      money.innerText = "$";
 
-<div class="caption">Meet the Creator and His Dog, Chance</div>
+      const angle = (Math.random() - 0.5) * Math.PI;
+      const radius = Math.random() * 300 + 100;
 
-<div class="cta">
-  <a href="#" id="aboutBtn">About the Founder</a>
-  <a class="linktree-btn" href="https://linktr.ee/Buyingtimenyc" target="_blank">Follow the Movement</a>
-</div>
+      const x = heartX + Math.cos(angle) * radius;
+      const y = heartY + Math.sin(angle) * radius;
 
-<div id="aboutModal" class="modal">
-  <div class="modal-content">
-    <h2>About the Founder</h2>
-    <p>
-      Buying Time NYC was built from the heart of hustle — turning vision into legacy.
-      Founded by <strong>Peter Crocitto</strong>, a one-handed drummer and creator from New York,
-      the brand stands for resilience and authenticity. With his husky <strong>Chance</strong> by his side,
-      Peter continues to redefine what it means to turn pain into progress and build something timeless.
-    </p>
-    <button class="close" id="closeModal">Close</button>
-  </div>
-</div>
+      money.style.left = `${x}px`;
+      money.style.top = `${y}px`;
+      container.appendChild(money);
 
-<footer>© 2025 Buying Time NYC. All rights reserved.</footer>
+      setTimeout(() => {
+        container.removeChild(money);
+      }, 6000);
+    }
 
-<script>
-/* modal behavior */
-const modal=document.getElementById("aboutModal");
-document.getElementById("aboutBtn").onclick=e=>{e.preventDefault();modal.style.display="flex";}
-document.getElementById("closeModal").onclick=()=>{modal.style.display="none";}
-window.onclick=e=>{if(e.target==modal)modal.style.display="none";}
-
-/* Fountain-style upward and raining dollar animation */
-const logo=document.getElementById("logo");
-setInterval(()=>{
-  for(let i=0;i<12;i++){
-    const dollar=document.createElement("div");
-    dollar.classList.add("dollar");
-    dollar.textContent="$";
-    const spread=(Math.random()-0.5)*200; // horizontal spread
-    dollar.style.setProperty("--xSpread",`${spread}px`);
-    dollar.style.animationDelay=`${Math.random()*0.3}s`;
-    logo.appendChild(dollar);
-    setTimeout(()=>dollar.remove(),3800);
-  }
-},300);
-</script>
-
+    setInterval(createMoney, 120);
+  </script>
 </body>
 </html>
+
