@@ -23,13 +23,13 @@
     }
 
     .logo {
-      width: 220px;
+      width: 280px;
       animation: pump 0.8s infinite;
     }
 
     @keyframes pump {
       0% { transform: scale(1); }
-      50% { transform: scale(1.15); }
+      50% { transform: scale(1.2); }
       100% { transform: scale(1); }
     }
 
@@ -46,22 +46,19 @@
 
     .money {
       position: absolute;
-      color: rgba(173, 255, 47, 0.4);
-      font-size: 32px;
+      color: rgba(173, 255, 47, 0.4); /* faint green */
+      font-size: 36px;
       opacity: 0.6;
-      animation: floatMoney 6.5s ease-out forwards;
+      animation: rainMoney 6s ease-out forwards;
     }
 
-    @keyframes floatMoney {
+    @keyframes rainMoney {
       0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.9;
-      }
-      70% {
-        opacity: 0.4;
+        transform: translateY(-50px) scale(1);
+        opacity: 1;
       }
       100% {
-        transform: translateY(-150vh) scale(1.4);
+        transform: translateY(120vh) scale(1.4);
         opacity: 0;
       }
     }
@@ -74,8 +71,8 @@
     }
 
     .subway-letter {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       margin: 4px;
       border-radius: 50%;
       color: white;
@@ -89,42 +86,41 @@
 
     .tagline {
       text-align: center;
-      font-size: 22px;
+      font-size: 24px;
       margin: 18px 0 40px;
       color: white;
-      font-family: cursive, serif;
+      font-family: cursive;
     }
 
     .layout {
       display: flex;
       justify-content: center;
       align-items: center;
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 30px;
       position: relative;
       z-index: 5;
-      gap: 30px;
+      gap: 40px;
     }
 
     .side-image {
-      width: 260px;
+      width: 300px;
       border-radius: 12px;
     }
 
     iframe {
       border: none;
-      width: 320px;
-      height: 200px;
+      width: 360px;
+      height: 240px;
     }
 
     .meet-caption {
       text-align: center;
-      margin-top: 15px;
-      font-size: 17px;
+      margin-top: 20px;
+      font-size: 18px;
       font-style: italic;
       color: #aaa;
-      font-family: cursive, serif;
     }
 
     .buttons {
@@ -138,12 +134,12 @@
       background-color: red;
       color: white;
       border: none;
-      padding: 14px 24px;
+      padding: 16px 28px;
       margin: 0 12px;
-      font-size: 18px;
-      border-radius: 10px;
+      font-size: 20px;
+      font-family: cursive;
+      border-radius: 12px;
       cursor: pointer;
-      font-family: cursive, serif;
     }
 
     #aboutModal {
@@ -161,17 +157,17 @@
     .modal-content {
       background-color: #111;
       color: white;
-      margin: 8% auto;
-      padding: 25px;
+      margin: 10% auto;
+      padding: 30px;
       border: 2px solid red;
-      width: 90%;
-      max-width: 620px;
-      border-radius: 12px;
-      position: relative;
+      width: 85%;
+      max-width: 700px;
+      border-radius: 16px;
       text-align: left;
-      font-size: 17px;
-      line-height: 1.6;
-      font-family: cursive, serif;
+      font-size: 18px;
+      line-height: 1.7;
+      font-family: cursive;
+      position: relative;
     }
 
     .close-btn {
@@ -179,7 +175,7 @@
       top: 10px;
       right: 16px;
       color: white;
-      font-size: 24px;
+      font-size: 26px;
       font-weight: bold;
       cursor: pointer;
     }
@@ -189,7 +185,7 @@
   <div class="money-container" id="money-container"></div>
 
   <div class="logo-container">
-    <img src="red%20logo%20btnyc.png" alt="Heart Logo" class="logo" />
+    <img src="red logo btnyc.png" alt="Heart Logo" class="logo" />
   </div>
 
   <div class="subway-title">
@@ -199,90 +195,4 @@
     <div class="subway-letter" style="background-color:#00933C">I</div>
     <div class="subway-letter" style="background-color:#FFD100">N</div>
     <div class="subway-letter" style="background-color:#6CBE45">G</div>
-    <div class="subway-letter" style="background-color:#00ADD0">T</div>
-    <div class="subway-letter" style="background-color:#00933C">I</div>
-    <div class="subway-letter" style="background-color:#FF6319">M</div>
-    <div class="subway-letter" style="background-color:#0039A6">E</div>
-    <div class="subway-letter" style="background-color:#FFD100">N</div>
-    <div class="subway-letter" style="background-color:#FFD100">Y</div>
-    <div class="subway-letter" style="background-color:#0039A6">C</div>
-  </div>
-
-  <div class="tagline">
-    𝒲𝒽𝑒𝓇𝑒 𝒾𝓃𝓈𝓅𝒾𝓇𝒶𝓉𝒾𝑜𝓃 𝓂𝑒𝑒𝓉𝓈 𝒽𝓊𝓈𝓉𝓁𝑒, 𝒶𝓃𝒹 𝓉𝒾𝓂𝑒 𝒾𝓈 𝓉𝒽𝑒 𝓊𝓁𝓉𝒾𝓂𝒶𝓉𝑒 𝒸𝓊𝓇𝓇𝑒𝓃𝒸𝓎
-  </div>
-
-  <div class="layout">
-    <img src="CPREAL.jpeg" class="side-image" alt="Petey, Chance, Shannon" />
-    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
-    <img src="CPTOONPNG.png" class="side-image" alt="Cartoon Petey and Chance" />
-  </div>
-
-  <div class="meet-caption">
-    𝓜𝓮𝓮𝓽 𝓽𝓱𝓮 𝓬𝓻𝓮𝓪𝓽𝓸𝓻 𝓪𝓷𝓭 𝓱𝓲𝓼 𝓭𝓸𝓰, 𝓒𝓱𝓪𝓷𝓬𝓮.
-  </div>
-
-  <div class="buttons">
-    <button onclick="openModal()">𝓜𝓮𝓮𝓽 𝓽𝓱𝓮 𝓯𝓸𝓾𝓷𝓭𝓮𝓻</button>
-    <button onclick="window.open('https://linktr.ee/Buyingtimenyc', '_blank')">𝓕𝓸𝓵𝓵𝓸𝔀 𝓽𝓱𝓮 𝓶𝓸𝓿𝓮𝓶𝓮𝓷𝓽</button>
-  </div>
-
-  <div id="aboutModal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-      <p>
-        Petey is the founder of Buying Time NYC — a vision born from adversity, hustle, and pure creative fire.
-        After a life-changing injury that cost him his arm, he refused to let that stop him. Instead, he became a one-handed drummer, a collector, a builder of brands, and a living testament that time is the most valuable currency.
-        <br><br>
-        Buying Time NYC represents second chances, relentless ambition, and a movement to turn pain into purpose. With Chance the husky by his side and a powerful partner in Shannon, Petey is carving out a lane where hustle meets healing — and where inspiration can be worn, watched, collected, or heard.
-      </p>
-    </div>
-  </div>
-
-  <script>
-    const container = document.getElementById("money-container");
-    const heart = document.querySelector(".logo");
-
-    function createMoney() {
-      const money = document.createElement("div");
-      money.classList.add("money");
-      money.innerText = "$";
-
-      const rect = heart.getBoundingClientRect();
-      const heartX = rect.left + rect.width / 2;
-      const heartY = rect.top + window.scrollY;
-
-      const angle = (Math.random() - 0.5) * Math.PI * 1.3;
-      const radius = Math.random() * 600 + 100;
-
-      const x = heartX + Math.cos(angle) * radius;
-      const y = heartY - Math.sin(angle) * radius;
-
-      money.style.left = `${x}px`;
-      money.style.top = `${heartY}px`;
-      container.appendChild(money);
-
-      setTimeout(() => {
-        container.removeChild(money);
-      }, 6500);
-    }
-
-    setInterval(createMoney, 80);
-
-    function openModal() {
-      document.getElementById("aboutModal").style.display = "block";
-    }
-
-    function closeModal() {
-      document.getElementById("aboutModal").style.display = "none";
-    }
-
-    window.onclick = function(event) {
-      const modal = document.getElementById("aboutModal");
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-  </script>
-</body>
-</html>
+    <div class="subway-letter" style
