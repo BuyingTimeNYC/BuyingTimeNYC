@@ -23,8 +23,8 @@
     }
 
     .logo {
-      width: 180px;
-      animation: pump 0.9s infinite;
+      width: 220px;
+      animation: pump 0.8s infinite;
     }
 
     @keyframes pump {
@@ -46,7 +46,7 @@
 
     .money {
       position: absolute;
-      color: rgba(173, 255, 47, 0.4); /* faint green */
+      color: rgba(173, 255, 47, 0.4);
       font-size: 32px;
       opacity: 0.6;
       animation: floatMoney 6.5s ease-out forwards;
@@ -57,11 +57,11 @@
         transform: translateY(0) scale(1);
         opacity: 0.9;
       }
-      80% {
-        opacity: 0.3;
+      70% {
+        opacity: 0.4;
       }
       100% {
-        transform: translateY(-120vh) scale(1.2);
+        transform: translateY(-150vh) scale(1.4);
         opacity: 0;
       }
     }
@@ -89,10 +89,10 @@
 
     .tagline {
       text-align: center;
-      font-family: 'Shortages', serif;
       font-size: 22px;
       margin: 18px 0 40px;
       color: white;
+      font-family: cursive, serif;
     }
 
     .layout {
@@ -108,14 +108,14 @@
     }
 
     .side-image {
-      width: 220px;
-      border-radius: 10px;
+      width: 260px;
+      border-radius: 12px;
     }
 
     iframe {
       border: none;
-      width: 280px;
-      height: 170px;
+      width: 320px;
+      height: 200px;
     }
 
     .meet-caption {
@@ -124,6 +124,7 @@
       font-size: 17px;
       font-style: italic;
       color: #aaa;
+      font-family: cursive, serif;
     }
 
     .buttons {
@@ -142,6 +143,7 @@
       font-size: 18px;
       border-radius: 10px;
       cursor: pointer;
+      font-family: cursive, serif;
     }
 
     #aboutModal {
@@ -169,6 +171,7 @@
       text-align: left;
       font-size: 17px;
       line-height: 1.6;
+      font-family: cursive, serif;
     }
 
     .close-btn {
@@ -205,7 +208,9 @@
     <div class="subway-letter" style="background-color:#0039A6">C</div>
   </div>
 
-  <div class="tagline">Where inspiration meets hustle, and time is the ultimate currency</div>
+  <div class="tagline">
+    𝒲𝒽𝑒𝓇𝑒 𝒾𝓃𝓈𝓅𝒾𝓇𝒶𝓉𝒾𝑜𝓃 𝓂𝑒𝑒𝓉𝓈 𝒽𝓊𝓈𝓉𝓁𝑒, 𝒶𝓃𝒹 𝓉𝒾𝓂𝑒 𝒾𝓈 𝓉𝒽𝑒 𝓊𝓁𝓉𝒾𝓂𝒶𝓉𝑒 𝒸𝓊𝓇𝓇𝑒𝓃𝒸𝓎
+  </div>
 
   <div class="layout">
     <img src="CPREAL.jpeg" class="side-image" alt="Petey, Chance, Shannon" />
@@ -213,11 +218,13 @@
     <img src="CPTOONPNG.png" class="side-image" alt="Cartoon Petey and Chance" />
   </div>
 
-  <div class="meet-caption">Meet the Creator and His Dog, Chance.</div>
+  <div class="meet-caption">
+    𝓜𝓮𝓮𝓽 𝓽𝓱𝓮 𝓬𝓻𝓮𝓪𝓽𝓸𝓻 𝓪𝓷𝓭 𝓱𝓲𝓼 𝓭𝓸𝓰, 𝓒𝓱𝓪𝓷𝓬𝓮.
+  </div>
 
   <div class="buttons">
-    <button onclick="openModal()">About the Founder</button>
-    <button onclick="window.open('https://linktr.ee/Buyingtimenyc', '_blank')">Follow the Movement</button>
+    <button onclick="openModal()">𝓜𝓮𝓮𝓽 𝓽𝓱𝓮 𝓯𝓸𝓾𝓷𝓭𝓮𝓻</button>
+    <button onclick="window.open('https://linktr.ee/Buyingtimenyc', '_blank')">𝓕𝓸𝓵𝓵𝓸𝔀 𝓽𝓱𝓮 𝓶𝓸𝓿𝓮𝓶𝓮𝓷𝓽</button>
   </div>
 
   <div id="aboutModal">
@@ -245,11 +252,11 @@
       const heartX = rect.left + rect.width / 2;
       const heartY = rect.top + window.scrollY;
 
-      const angle = (Math.random() * Math.PI) - Math.PI / 2;
-      const radius = Math.random() * 500 + 100;
+      const angle = (Math.random() - 0.5) * Math.PI * 1.3;
+      const radius = Math.random() * 600 + 100;
 
       const x = heartX + Math.cos(angle) * radius;
-      const y = heartY - Math.abs(Math.sin(angle)) * radius;
+      const y = heartY - Math.sin(angle) * radius;
 
       money.style.left = `${x}px`;
       money.style.top = `${heartY}px`;
