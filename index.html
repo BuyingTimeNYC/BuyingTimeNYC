@@ -54,14 +54,14 @@
 
     @keyframes floatMoney {
       0% {
-        transform: translateY(0) scale(1);
+        transform: translate(0, 0) scale(1);
         opacity: 0.9;
       }
       70% {
         opacity: 0.4;
       }
       100% {
-        transform: translateY(-150vh) scale(1.4);
+        transform: translate(0, 100vh) scale(1.4);
         opacity: 0;
       }
     }
@@ -97,6 +97,7 @@
 
     .layout {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       align-items: center;
       max-width: 1200px;
@@ -238,7 +239,6 @@
       </p>
     </div>
   </div>
-
   <script>
     const container = document.getElementById("money-container");
     const heart = document.querySelector(".logo");
@@ -252,11 +252,11 @@
       const heartX = rect.left + rect.width / 2;
       const heartY = rect.top + window.scrollY;
 
-      const angle = (Math.random() - 0.5) * Math.PI * 1.3;
-      const radius = Math.random() * 600 + 100;
+      const angle = (Math.random() - 0.5) * Math.PI * 2;
+      const radius = Math.random() * 400;
 
       const x = heartX + Math.cos(angle) * radius;
-      const y = heartY - Math.sin(angle) * radius;
+      const y = heartY + Math.sin(angle) * radius;
 
       money.style.left = `${x}px`;
       money.style.top = `${heartY}px`;
