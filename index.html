@@ -23,13 +23,13 @@
     }
 
     .logo {
-      width: 130px;
-      animation: pulse 2s infinite;
+      width: 180px;
+      animation: pump 0.9s infinite;
     }
 
-    @keyframes pulse {
+    @keyframes pump {
       0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      50% { transform: scale(1.15); }
       100% { transform: scale(1); }
     }
 
@@ -46,15 +46,24 @@
 
     .money {
       position: absolute;
-      color: greenyellow;
-      font-size: 28px;
-      opacity: 0.7;
-      animation: floatMoney 6s linear forwards;
+      color: rgba(173, 255, 47, 0.4); /* faint green */
+      font-size: 32px;
+      opacity: 0.6;
+      animation: floatMoney 6.5s ease-out forwards;
     }
 
     @keyframes floatMoney {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.9;
+      }
+      80% {
+        opacity: 0.3;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+      }
     }
 
     .subway-title {
@@ -65,13 +74,13 @@
     }
 
     .subway-letter {
-      width: 42px;
-      height: 42px;
-      margin: 3px;
+      width: 48px;
+      height: 48px;
+      margin: 4px;
       border-radius: 50%;
       color: white;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -81,8 +90,8 @@
     .tagline {
       text-align: center;
       font-family: 'Shortages', serif;
-      font-size: 18px;
-      margin: 10px 0 30px;
+      font-size: 22px;
+      margin: 18px 0 40px;
       color: white;
     }
 
@@ -90,36 +99,36 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 10px;
+      padding: 20px;
       position: relative;
       z-index: 5;
-      gap: 20px;
+      gap: 30px;
     }
 
     .side-image {
-      width: 160px;
+      width: 220px;
       border-radius: 10px;
     }
 
     iframe {
       border: none;
-      width: 250px;
-      height: 140px;
+      width: 280px;
+      height: 170px;
     }
 
     .meet-caption {
       text-align: center;
-      margin-top: 10px;
-      font-size: 15px;
+      margin-top: 15px;
+      font-size: 17px;
       font-style: italic;
       color: #aaa;
     }
 
     .buttons {
       text-align: center;
-      margin-top: 30px;
+      margin-top: 40px;
       z-index: 5;
       position: relative;
     }
@@ -128,10 +137,10 @@
       background-color: red;
       color: white;
       border: none;
-      padding: 12px 20px;
-      margin: 0 10px;
-      font-size: 16px;
-      border-radius: 8px;
+      padding: 14px 24px;
+      margin: 0 12px;
+      font-size: 18px;
+      border-radius: 10px;
       cursor: pointer;
     }
 
@@ -150,31 +159,30 @@
     .modal-content {
       background-color: #111;
       color: white;
-      margin: 10% auto;
-      padding: 20px;
+      margin: 8% auto;
+      padding: 25px;
       border: 2px solid red;
       width: 90%;
-      max-width: 600px;
+      max-width: 620px;
       border-radius: 12px;
       position: relative;
       text-align: left;
-      font-size: 16px;
+      font-size: 17px;
       line-height: 1.6;
     }
 
     .close-btn {
       position: absolute;
-      top: 8px;
-      right: 14px;
+      top: 10px;
+      right: 16px;
       color: white;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: bold;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
-
   <div class="money-container" id="money-container"></div>
 
   <div class="logo-container">
@@ -235,10 +243,10 @@
 
       const rect = heart.getBoundingClientRect();
       const heartX = rect.left + rect.width / 2;
-      const heartY = rect.top;
+      const heartY = rect.top + window.scrollY;
 
       const angle = (Math.random() * Math.PI) - Math.PI / 2;
-      const radius = Math.random() * 400 + 100;
+      const radius = Math.random() * 500 + 100;
 
       const x = heartX + Math.cos(angle) * radius;
       const y = heartY - Math.abs(Math.sin(angle)) * radius;
@@ -249,10 +257,10 @@
 
       setTimeout(() => {
         container.removeChild(money);
-      }, 6000);
+      }, 6500);
     }
 
-    setInterval(createMoney, 90);
+    setInterval(createMoney, 80);
 
     function openModal() {
       document.getElementById("aboutModal").style.display = "block";
