@@ -11,7 +11,7 @@
       background: black;
       color: white;
       font-family: Arial, sans-serif;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     .logo-container {
@@ -46,22 +46,23 @@
 
     .money {
       position: absolute;
-      color: rgba(173, 255, 47, 0.4);
-      font-size: 32px;
-      opacity: 0.6;
-      animation: floatMoney 6.5s ease-out forwards;
+      color: rgba(0, 255, 0, 0.6);
+      font-size: 28px;
+      opacity: 0.9;
+      transform-origin: center;
+      animation: spew 6s linear forwards;
     }
 
-    @keyframes floatMoney {
+    @keyframes spew {
       0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.9;
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 1;
       }
-      70% {
-        opacity: 0.4;
+      40% {
+        opacity: 0.8;
       }
       100% {
-        transform: translate(0, 100vh) scale(1.4);
+        transform: translate(var(--xMove), 100vh) scale(1.5) rotate(360deg);
         opacity: 0;
       }
     }
@@ -84,7 +85,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: sans-serif;
     }
 
     .tagline {
@@ -191,7 +191,7 @@
   <div class="money-container" id="money-container"></div>
 
   <div class="logo-container">
-    <img src="red%20logo%20btnyc.png" alt="Heart Logo" class="logo" />
+    <img src="red%20logo%20btnyc.png" alt="Heart Logo" class="logo" id="heart" />
   </div>
 
   <div class="subway-title">
@@ -243,30 +243,24 @@
 
   <script>
     const container = document.getElementById("money-container");
-    const heart = document.querySelector(".logo");
+    const heart = document.getElementById("heart");
 
     function createMoney() {
       const money = document.createElement("div");
       money.classList.add("money");
-      money.innerText = "$";
+      money.textContent = "$";
 
       const rect = heart.getBoundingClientRect();
       const heartX = rect.left + rect.width / 2;
       const heartY = rect.top + window.scrollY;
 
-      const angle = (Math.random() - 0.5) * Math.PI * 2;
-      const radius = Math.random() * 400;
-
-      const x = heartX + Math.cos(angle) * radius;
-      const y = heartY + Math.sin(angle) * radius;
-
-      money.style.left = `${x}px`;
+      const xSpread = (Math.random() - 0.5) * window.innerWidth * 1.2;
+      money.style.left = `${heartX}px`;
       money.style.top = `${heartY}px`;
-      container.appendChild(money);
+      money.style.setProperty("--xMove", `${xSpread}px`);
 
-      setTimeout(() => {
-        container.removeChild(money);
-      }, 6500);
+      container.appendChild(money);
+      setTimeout(() => container.removeChild(money), 6000);
     }
 
     setInterval(createMoney, 80);
@@ -281,10 +275,8 @@
 
     window.onclick = function(event) {
       const modal = document.getElementById("aboutModal");
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
+      if (event.target === modal) modal.style.display = "none";
+    };
   </script>
 </body>
 </html>
