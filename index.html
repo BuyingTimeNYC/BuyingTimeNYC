@@ -5,221 +5,297 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Buying Time NYC</title>
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  background: black;
-  color: white;
-  font-family: Arial, sans-serif;
-  overflow-x: hidden;
-}
-.logo-container {
-  position: relative;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
-  z-index: 10;
-}
-.logo {
-  width: 220px;
-  animation: pump 0.8s infinite;
-}
-@keyframes pump {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.15); }
-  100% { transform: scale(1); }
-}
-.money-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
-}
-.money {
-  position: absolute;
-  color: rgba(173,255,47,0.5);
-  font-size: 30px;
-  opacity: 0.9;
-  animation: burstFall 4.5s ease-out forwards;
-}
-@keyframes burstFall {
-  0% { transform: scale(1) translate(0,0); opacity: 1; }
-  40% { opacity: 0.8; }
-  100% { transform: translate(var(--xMove),100vh) scale(1.4) rotate(360deg); opacity: 0; }
-}
-.subway-title {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding-top: 10px;
-}
-.subway-letter {
-  width: 48px; height: 48px; margin: 4px; border-radius: 50%;
-  color: white; font-weight: bold; font-size: 22px;
-  display: flex; align-items: center; justify-content: center;
-}
-.tagline {
-  text-align: center;
-  font-size: 22px;
-  margin: 18px 0 40px;
-  color: gold;
-  font-family: cursive, serif;
-}
-.layout {
-  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
-  max-width: 1200px; margin: 0 auto; padding: 20px;
-  position: relative; z-index: 5; gap: 30px;
-}
-.side-image {
-  width: 260px;
-  border-radius: 12px;
-}
-iframe {
-  border: none; width: 320px; height: 200px;
-}
-.caption {
-  text-align: center; font-size: 16px; color: #ccc;
-  margin-top: 8px; font-family: cursive, serif;
-}
-.buttons {
-  text-align: center; margin-top: 40px;
-  z-index: 5; position: relative;
-}
-.buttons button {
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 14px 24px;
-  margin: 0 12px;
-  font-size: 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-family: cursive, serif;
-}
-#aboutModal,#missionModal {
-  display:none;
-  position:fixed;
-  z-index:100;
-  left:0; top:0;
-  width:100%; height:100%;
-  overflow:auto;
-  background-color:rgba(0,0,0,0.85);
-}
-.modal-content {
-  background-color:#111; color:white;
-  margin:8% auto; padding:25px;
-  border:2px solid red; width:90%; max-width:620px;
-  border-radius:12px; position:relative;
-  text-align:left; font-size:17px;
-  line-height:1.6; font-family:cursive,serif;
-}
-.close-btn {
-  position:absolute; top:10px; right:16px;
-  color:white; font-size:24px; font-weight:bold;
-  cursor:pointer;
-}
+  :root{
+    --taxi-yellow:#FFD400;
+    --taxi-black:#000000;
+    --gold:#d4af37;
+  }
+
+  /* Base */
+  body{
+    margin:0; padding:0; color:#fff; background:#000; font-family:Arial, sans-serif; overflow-x:hidden;
+    position:relative;
+  }
+
+  /* Subtle repeating watermark of your logo behind everything */
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:-2; pointer-events:none;
+    background-image:url("red%20logo%20btnyc.png");
+    background-size:140px auto;
+    background-repeat:repeat;
+    background-position:0 0;
+    opacity:0.06; filter:grayscale(1) contrast(0.8);
+  }
+
+  /* Money layer below content, above watermark */
+  .money-container{ position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden; }
+
+  .logo-container{ position:relative; width:100%; text-align:center; margin-top:30px; z-index:10; }
+  .logo{ width:220px; animation:pump 0.8s infinite; }
+  @keyframes pump{ 0%{transform:scale(1)} 50%{transform:scale(1.15)} 100%{transform:scale(1)} }
+
+  /* Subway title */
+  .subway-title{ display:flex; justify-content:center; flex-wrap:wrap; padding-top:10px; position:relative; z-index:5; }
+  .subway-letter{
+    width:48px; height:48px; margin:4px; border-radius:50%;
+    color:#fff; font-weight:bold; font-size:22px; display:flex; align-items:center; justify-content:center;
+  }
+
+  /* Tagline gold */
+  .tagline{
+    text-align:center; font-size:22px; margin:18px 0 40px; color:var(--gold); font-family:cursive, serif;
+  }
+
+  /* 3-column layout: real left, video middle (small), cartoon right */
+  .layout{
+    display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start;
+    gap:30px; max-width:1200px; margin:0 auto; padding:20px; position:relative; z-index:5;
+  }
+  .side-image{ width:260px; border-radius:12px; }
+  .caption{ text-align:center; font-size:16px; color:#ccc; margin-top:8px; font-family:cursive, serif; }
+
+  /* Responsive video wrapper */
+  .video-wrapper{ position:relative; width:320px; max-width:90vw; }
+  .video-wrapper::before{ content:""; display:block; padding-bottom:56.25%; }
+  .video-wrapper iframe{
+    position:absolute; top:0; left:0; width:100%; height:100%; border:0;
+  }
+
+  /* Taxi-stripe buttons */
+  .buttons{ text-align:center; margin-top:32px; position:relative; z-index:5; display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+  .btn{
+    font-family:cursive, serif; font-size:22px; line-height:1; padding:16px 26px; border:none; border-radius:12px; cursor:pointer;
+    color:#fff; text-shadow:0 1px 0 rgba(0,0,0,0.6);
+    background:
+      repeating-linear-gradient(45deg, var(--taxi-yellow) 0 12px, var(--taxi-black) 12px 16px);
+    box-shadow:0 6px 16px rgba(0,0,0,0.35), inset 0 0 0 2px rgba(0,0,0,0.5);
+  }
+  .btn:hover{ filter:brightness(1.05); }
+  .btn-link{ text-decoration:none; display:inline-block; }
+
+  /* Shop Coming Soon badge */
+  .shop-note{
+    margin:22px auto 0; font-size:16px; color:#ddd; font-family:cursive, serif;
+    padding:10px 16px; border-radius:10px; width:fit-content;
+    background:linear-gradient(90deg, rgba(255,212,64,0.15), rgba(0,0,0,0.0));
+    border:1px solid rgba(255,212,64,0.25);
+  }
+
+  /* Modals */
+  #aboutModal,#missionModal{
+    display:none; position:fixed; inset:0; z-index:100; background:rgba(0,0,0,0.85);
+  }
+  .modal-content{
+    background:#111; color:#fff; margin:8% auto; padding:28px; border:2px solid red;
+    width:90%; max-width:640px; border-radius:12px; position:relative; text-align:left;
+    font-size:18px; line-height:1.65; font-family:cursive, serif;
+  }
+  .close-btn{ position:absolute; top:10px; right:16px; color:#fff; font-size:26px; font-weight:bold; cursor:pointer; }
+
+  /* Spew + drip animations */
+  .money{
+    position:absolute; font-size:30px; opacity:0.95;
+    animation: spew 0.9s cubic-bezier(.2,.8,.2,1) forwards, fall 5.2s ease-out forwards;
+    will-change: transform, opacity;
+  }
+  @keyframes spew{
+    0%{ transform:translate(0,0) scale(1); }
+    100%{ transform:translate(var(--xBurst), var(--yBurst)) scale(1.2); }
+  }
+  @keyframes fall{
+    0%{ opacity:1; }
+    100%{ transform:translate(var(--xDrift), 100vh) scale(1.45) rotate(360deg); opacity:0; }
+  }
+
+  /* Occasional sticky drips near the title that creep down */
+  .drip{
+    position:absolute; font-size:24px; opacity:0.9;
+    animation: stick 1.2s ease-out forwards, creep 6s 1.2s linear forwards;
+    will-change: transform, opacity;
+  }
+  @keyframes stick{
+    0%{ transform:translate(0,-16px); opacity:0; }
+    100%{ transform:translate(0,0); opacity:1; }
+  }
+  @keyframes creep{
+    0%{ transform:translate(0,0); }
+    100%{ transform:translate(0,60px); opacity:0.2; }
+  }
+
+  /* Bottom pool line for effect */
+  .pool{
+    position:fixed; left:0; right:0; bottom:0; height:28px; z-index:-1; pointer-events:none;
+    background:linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    border-top:1px solid rgba(255,255,255,0.06);
+  }
+
+  /* Keep content above spew/drip layer */
+  .content{ position:relative; z-index:5; }
 </style>
 </head>
 <body>
-<div class="money-container" id="money-container"></div>
+  <div class="money-container" id="money-container"></div>
+  <div class="pool"></div>
 
-<div class="logo-container">
-  <img src="red%20logo%20btnyc.png" alt="Heart Logo" class="logo" />
-</div>
-
-<div class="subway-title">
-  <div class="subway-letter" style="background-color:#FF6319">B</div>
-  <div class="subway-letter" style="background-color:#6CBE45">U</div>
-  <div class="subway-letter" style="background-color:#FFD100">Y</div>
-  <div class="subway-letter" style="background-color:#00933C">I</div>
-  <div class="subway-letter" style="background-color:#FFD100">N</div>
-  <div class="subway-letter" style="background-color:#6CBE45">G</div>
-  <div class="subway-letter" style="background-color:#00ADD0">T</div>
-  <div class="subway-letter" style="background-color:#00933C">I</div>
-  <div class="subway-letter" style="background-color:#FF6319">M</div>
-  <div class="subway-letter" style="background-color:#0039A6">E</div>
-  <div class="subway-letter" style="background-color:#FFD100">N</div>
-  <div class="subway-letter" style="background-color:#FFD100">Y</div>
-  <div class="subway-letter" style="background-color:#0039A6">C</div>
-</div>
-
-<div class="tagline">
-  𝒲𝒽𝑒𝓇𝑒 𝒾𝓃𝓈𝓅𝒾𝓇𝒶𝓉𝒾𝑜𝓃 𝓂𝑒𝑒𝓉𝓈 𝒽𝓊𝓈𝓉𝓁𝑒, 𝒶𝓃𝒹 𝓉𝒾𝓂𝑒 𝒾𝓈 𝓉𝒽𝑒 𝓊𝓁𝓉𝒾𝓂𝒶𝓉𝑒 𝒸𝓊𝓇𝓇𝑒𝓃𝒸𝓎
-</div>
-
-<div class="layout">
-  <div>
-    <img src="CPREAL.jpeg" class="side-image" alt="Petey and Chance" />
-    <div class="caption">𝓟𝓮𝓽𝓮𝔂 𝓪𝓷𝓭 𝓒𝓱𝓪𝓷𝓬𝓮 — 𝓽𝓱𝓮 𝓱𝓮𝓪𝓻𝓽 𝓸𝓯 𝓑𝓾𝔂𝓲𝓷𝓰 𝓣𝓲𝓶𝓮 𝓝𝓨𝓒.</div>
+  <div class="logo-container">
+    <img src="red%20logo%20btnyc.png" alt="Heart Logo" class="logo" />
   </div>
-  <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
-  <div>
-    <img src="CPTOONPNG.png" class="side-image" alt="Cartoon Petey and Chance" />
-    <div class="caption">𝓐 𝓬𝓪𝓻𝓽𝓸𝓸𝓷 𝓻𝓮𝓯𝓵𝓮𝓬𝓽𝓲𝓸𝓷 𝓸𝓯 𝓹𝓪𝓼𝓼𝓲𝓸𝓷 𝓪𝓷𝓭 𝓭𝓻𝓮𝓪𝓶.</div>
-  </div>
-</div>
 
-<div class="buttons">
-  <button onclick="openModal('aboutModal')">𝓜𝓮𝓮𝓽 𝓽𝓱𝓮 𝓯𝓸𝓾𝓷𝓭𝓮𝓻</button>
-  <button onclick="openModal('missionModal')">𝓣𝓱𝓮 𝓜𝓲𝓼𝓼𝓲𝓸𝓷</button>
-  <button onclick="window.open('https://linktr.ee/Buyingtimenyc','_blank')">𝓕𝓸𝓵𝓵𝓸𝔀 𝓽𝓱𝓮 𝓶𝓸𝓿𝓮𝓶𝓮𝓷𝓽</button>
-</div>
-
-<div id="aboutModal">
-  <div class="modal-content">
-    <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
-    <p>
-      Petey is the founder of Buying Time NYC — a vision born from adversity, hustle, and pure creative fire.
-      After a life-changing injury that cost him his arm, he refused to let that stop him.
-      Instead, he became a one-handed drummer, a collector, a builder of brands, and a living testament that time is the most valuable currency.
-      <br><br>With Chance the husky by his side, Petey proves that creativity and determination can rebuild everything.
-    </p>
+  <div class="subway-title" id="subwayTitle">
+    <div class="subway-letter" style="background-color:#FF6319">B</div>
+    <div class="subway-letter" style="background-color:#6CBE45">U</div>
+    <div class="subway-letter" style="background-color:#FFD100">Y</div>
+    <div class="subway-letter" style="background-color:#00933C">I</div>
+    <div class="subway-letter" style="background-color:#FFD100">N</div>
+    <div class="subway-letter" style="background-color:#6CBE45">G</div>
+    <div class="subway-letter" style="background-color:#00ADD0">T</div>
+    <div class="subway-letter" style="background-color:#00933C">I</div>
+    <div class="subway-letter" style="background-color:#FF6319">M</div>
+    <div class="subway-letter" style="background-color:#0039A6">E</div>
+    <div class="subway-letter" style="background-color:#FFD100">N</div>
+    <div class="subway-letter" style="background-color:#FFD100">Y</div>
+    <div class="subway-letter" style="background-color:#0039A6">C</div>
   </div>
-</div>
 
-<div id="missionModal">
-  <div class="modal-content">
-    <span class="close-btn" onclick="closeModal('missionModal')">&times;</span>
-    <p>
-      Buying Time NYC exists to turn pain into purpose.
-      Every creation — from clothing to collectibles — reminds us that ambition and resilience define success.
-      <br><br>This movement is about second chances, relentless hustle, and valuing time as the ultimate currency.
-    </p>
+  <div class="tagline">
+    𝒲𝒽𝑒𝓇𝑒 𝒾𝓃𝓈𝓅𝒾𝓇𝒶𝓉𝒾𝓸𝓷 𝓂𝑒𝑒𝓉𝓈 𝒽𝓊𝓈𝓉𝓁𝑒, 𝒶𝓃𝒹 𝓉𝒾𝓶𝑒 𝒾𝓈 𝓉𝒽𝑒 𝓊𝓁𝓉𝒾𝓶𝒶𝓉𝑒 𝒸𝓊𝓇𝓇𝑒𝓃𝒸𝓎
   </div>
-</div>
+
+  <div class="layout content">
+    <!-- Left: real photo -->
+    <div>
+      <img src="CPREAL.jpeg" class="side-image" alt="Petey and Chance" />
+      <div class="caption">𝓟𝓮𝓽𝓮𝔂 𝓪𝓷𝓭 𝓒𝓱𝓪𝓷𝓬𝓮 — 𝓽𝓱𝓮 𝓱𝓮𝓪𝓻𝓽 𝓸𝓯 𝓑𝓾𝔂𝓲𝓷𝓰 𝓣𝓲𝓶𝓮 𝓝𝓨𝓒.</div>
+    </div>
+
+    <!-- Middle: video small -->
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/Vpl7xzAcWyM"
+        title="Buying Time NYC - Short"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- Right: cartoon -->
+    <div>
+      <img src="CPTOONPNG.png" class="side-image" alt="Cartoon Petey and Chance" />
+      <div class="caption">𝓐 𝓬𝓪𝓻𝓽𝓸𝓸𝓷 𝓻𝓮𝓯𝓵𝓮𝓬𝓽𝓲𝓸𝓷 𝓸𝓯 𝓹𝓪𝓼𝓼𝓲𝓸𝓷 𝓪𝓷𝓭 𝓭𝓻𝓮𝓪𝓶.</div>
+    </div>
+  </div>
+
+  <!-- Buttons below the row -->
+  <div class="buttons content">
+    <button class="btn" onclick="openModal('aboutModal')">𝓜𝓮𝓮𝓽 𝓽𝓱𝓮 𝓯𝓸𝓾𝓷𝓭𝓮𝓻</button>
+    <button class="btn" onclick="openModal('missionModal')">𝓣𝓱𝓮 𝓜𝓲𝓼𝓼𝓲𝓸𝓷</button>
+    <a class="btn btn-link" href="https://linktr.ee/Buyingtimenyc" target="_blank" rel="noopener">𝓕𝓸𝓵𝓵𝓸𝔀 𝓽𝓱𝓮 𝓶𝓸𝓿𝓮𝓶𝓮𝓷𝓽</a>
+    <div class="shop-note">Shop coming soon — tomorrow</div>
+  </div>
+
+  <!-- Modals -->
+  <div id="aboutModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
+      <p>
+        Petey is the founder of Buying Time NYC — a vision born from adversity, hustle, and pure creative fire.
+        After a life-changing injury that cost him his arm, he refused to stop. He became a one-handed drummer, a collector,
+        a builder of brands, and a living reminder that time is the ultimate currency.
+        <br><br>With Chance the husky by his side, Petey keeps turning pain into purpose.
+      </p>
+    </div>
+  </div>
+
+  <div id="missionModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('missionModal')">&times;</span>
+      <p>
+        Buying Time NYC represents second chances, relentless ambition, and turning time into impact.
+        Every design, video, and collectible carries the same message: resilience pays.
+        <br><br>This movement is about making every second count.
+      </p>
+    </div>
+  </div>
 
 <script>
-const container=document.getElementById("money-container");
-const heart=document.querySelector(".logo");
+  const container = document.getElementById("money-container");
+  const heart = document.querySelector(".logo");
+  const titleEl = document.getElementById("subwayTitle");
 
-function createMoney(){
-  const money=document.createElement("div");
-  money.classList.add("money");
-  money.innerText="$";
-  const rect=heart.getBoundingClientRect();
-  const heartX=rect.left+rect.width/2;
-  const heartY=rect.top+window.scrollY+10; // top-center offset
-  const spread=(Math.random()-0.5)*600; // wide spread
-  money.style.setProperty('--xMove',`${spread}px`);
-  money.style.left=`${heartX}px`;
-  money.style.top=`${heartY}px`;
-  container.appendChild(money);
-  setTimeout(()=>container.removeChild(money),4500);
-}
-setInterval(createMoney,90);
+  function rand(a,b){ return a + Math.random()*(b-a); }
 
-function openModal(id){document.getElementById(id).style.display="block";}
-function closeModal(id){document.getElementById(id).style.display="none";}
-window.onclick=function(e){
-  ["aboutModal","missionModal"].forEach(id=>{
-    const m=document.getElementById(id);
-    if(e.target==m) m.style.display="none";
-  });
-};
+  // Create burst from top-center of heart
+  function createMoney(){
+    if(!heart) return;
+    const rect = heart.getBoundingClientRect();
+    const xCenter = rect.left + rect.width/2;
+    const yTop = rect.top + window.scrollY - 6; // slightly above the heart top
+
+    const el = document.createElement("div");
+    el.className = "money";
+    el.textContent = "$";
+
+    // Randomize color: green, red, near-black
+    const palette = ["#00ff73", "#ff2b2b", "#111111"];
+    el.style.color = palette[Math.floor(Math.random()*palette.length)];
+
+    // Burst vector (up and out), then long drift
+    const angle = rand(-Math.PI/6, Math.PI/6); // narrow cone from the top
+    const burst = rand(120, 260);
+    const xBurst = Math.cos(angle) * burst;
+    const yBurst = -Math.abs(Math.sin(angle) * burst) - rand(30, 80); // upward
+
+    const xDrift = (Math.random() - 0.5) * window.innerWidth * 0.9;
+
+    el.style.left = xCenter + "px";
+    el.style.top  = yTop + "px";
+    el.style.setProperty("--xBurst", xBurst + "px");
+    el.style.setProperty("--yBurst", yBurst + "px");
+    el.style.setProperty("--xDrift", xDrift + "px");
+
+    container.appendChild(el);
+    setTimeout(()=> el.remove(), 6200);
+  }
+
+  // Occasional sticky drips around the subway letters
+  function createDrip(){
+    if(!titleEl) return;
+    const r = titleEl.getBoundingClientRect();
+    const x = rand(r.left, r.right);
+    const y = rand(r.top + window.scrollY - 10, r.bottom + window.scrollY + 10);
+
+    const d = document.createElement("div");
+    d.className = "drip";
+    d.textContent = "$";
+    const palette = ["#00ff73", "#ff2b2b", "#111111"];
+    d.style.color = palette[Math.floor(Math.random()*palette.length)];
+    d.style.left = x + "px";
+    d.style.top  = y + "px";
+
+    container.appendChild(d);
+    setTimeout(()=> d.remove(), 8000);
+  }
+
+  // Emit in sync with heartbeat: faster during scale-up frame
+  let tick = 0;
+  setInterval(()=>{
+    // More bursts, slight randomness
+    createMoney();
+    if(++tick % 3 === 0) createMoney();
+    // Some drips
+    if(Math.random() < 0.25) createDrip();
+  }, 100);
+
+  // Modals
+  function openModal(id){ document.getElementById(id).style.display="block"; }
+  function closeModal(id){ document.getElementById(id).style.display="none"; }
+  window.onclick = function(e){
+    ["aboutModal","missionModal"].forEach(id=>{
+      const m = document.getElementById(id);
+      if(e.target === m) m.style.display="none";
+    });
+  };
 </script>
 </body>
 </html>
