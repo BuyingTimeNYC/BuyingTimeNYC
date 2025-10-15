@@ -1,5 +1,4 @@
-<!-- /index.html -->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -21,7 +20,6 @@
       overflow-x:hidden; position:relative;
     }
 
-    /* Dense watermark */
     body::before, body::after{
       content:""; position:fixed; inset:0; pointer-events:none;
       background-image:url("red%20logo%20btnyc.png");
@@ -31,11 +29,23 @@
     body::before{ background-size:72px auto; background-position:0 0; opacity:.10; }
     body::after { background-size:72px auto; background-position:36px 36px; opacity:.08; }
 
-    /* Money layer */
     .money-layer{ position:fixed; inset:0; z-index:1; pointer-events:none; overflow:hidden; contain:layout; }
 
-    /* Content */
     .content{ position:relative; z-index:2; }
+
+    .logo-container{ text-align:center; margin-top:30px; }
+
+    .logo {
+      width:240px;
+      height:auto;
+      animation: beat .9s infinite;
+      transform-origin: center;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform:
+content{ position:relative; z-index:2; }
 
     /* Logo */
     .logo-container{ text-align:center; margin-top:30px; }
