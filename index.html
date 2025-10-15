@@ -1,208 +1,194 @@
+<!-- /index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Buying Time NYC</title>
-<style>
-  :root{
-    --gold:#d4af37;
-    --btn-red:#e11919;
-    --btn-red-hover:#ff2e2e;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buying Time NYC</title>
+  <meta name="description" content="Buying Time NYC: inspiration meets hustle. Time is the ultimate currency." />
+  <link rel="preload" as="image" href="red%20logo%20btnyc.png" imagesrcset="red%20logo%20btnyc.png 1x" />
+  <style>
+    :root{
+      --gold:#d4af37;
+      --btn-red:#e11919;
+      --btn-red-hover:#ff2e2e;
+      --bg:#000;
+      --fg:#fff;
+    }
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--fg); background:var(--bg); font-family:Arial, sans-serif;
+      overflow-x:hidden; position:relative;
+    }
 
-  /* Base */
-  html,body{height:100%}
-  body{
-    margin:0; padding:0; color:#fff; background:#000; font-family:Arial, sans-serif; overflow-x:hidden; position:relative;
-  }
+    /* Dense watermark */
+    body::before, body::after{
+      content:""; position:fixed; inset:0; pointer-events:none;
+      background-image:url("red%20logo%20btnyc.png");
+      background-repeat:repeat; background-attachment:fixed;
+      filter:grayscale(1) contrast(.9); z-index:0;
+    }
+    body::before{ background-size:72px auto; background-position:0 0; opacity:.10; }
+    body::after { background-size:72px auto; background-position:36px 36px; opacity:.08; }
 
-  /* Dense LV-style watermark using two tiled layers (no stray text) */
-  body::before,
-  body::after{
-    content:"";
-    position:fixed; inset:0; pointer-events:none;
-    background-image:url("red%20logo%20btnyc.png");
-    background-repeat:repeat;
-    background-attachment:fixed;
-    filter:grayscale(1) contrast(.9);
-    z-index:0;
-  }
-  body::before{
-    background-size:72px auto;            /* density */
-    background-position:0 0;
-    opacity:.10;                           /* visibility */
-  }
-  body::after{
-    background-size:72px auto;
-    background-position:36px 36px;         /* offset for tighter pattern */
-    opacity:.08;
-  }
+    /* Money layer */
+    .money-layer{ position:fixed; inset:0; z-index:1; pointer-events:none; overflow:hidden; contain:layout; }
 
-  /* Money layer above watermark, below content */
-  .money-layer{ position:fixed; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
+    /* Content */
+    .content{ position:relative; z-index:2; }
 
-  /* Content above effects */
-  .content{ position:relative; z-index:2; }
+    /* Logo */
+    .logo-container{ text-align:center; margin-top:30px; }
+    .logo{ width:240px; height:auto; animation:pump .8s infinite; }
+    @keyframes pump{ 0%{transform:scale(1)} 50%{transform:scale(1.15)} 100%{transform:scale(1)} }
 
-  /* Top logo */
-  .logo-container{ text-align:center; margin-top:30px; }
-  .logo{ width:240px; animation:pump .8s infinite; }
-  @keyframes pump{ 0%{transform:scale(1)} 50%{transform:scale(1.15)} 100%{transform:scale(1)} }
+    /* Subway title */
+    .subway-title{ display:flex; justify-content:center; flex-wrap:wrap; padding-top:10px; }
+    .subway-letter{
+      width:48px; height:48px; margin:4px; border-radius:50%;
+      color:#fff; font-weight:bold; font-size:22px; display:flex; align-items:center; justify-content:center;
+    }
 
-  /* Subway title */
-  .subway-title{ display:flex; justify-content:center; flex-wrap:wrap; padding-top:10px; }
-  .subway-letter{
-    width:48px; height:48px; margin:4px; border-radius:50%;
-    color:#fff; font-weight:bold; font-size:22px; display:flex; align-items:center; justify-content:center;
-  }
+    /* Tagline */
+    .tagline{ text-align:center; font-size:22px; margin:18px 0 40px; color:var(--gold); font-family:cursive, serif; }
 
-  /* Tagline */
-  .tagline{ text-align:center; font-size:22px; margin:18px 0 40px; color:var(--gold); font-family:cursive, serif; }
+    /* Grid */
+    .layout{
+      display:grid; grid-template-columns: repeat(3, minmax(280px, 1fr));
+      gap:34px; max-width:1200px; margin:0 auto; padding:20px; align-items:start;
+    }
+    .side-image{ width:100%; max-width:360px; border-radius:14px; display:block; margin:0 auto; height:auto; }
+    .cell{ display:flex; flex-direction:column; align-items:center; }
+    .caption{ text-align:center; font-size:18px; color:#ccc; margin-top:10px; font-family:cursive, serif; }
 
-  /* Three-column layout: Real | Video | Cartoon */
-  .layout{
-    display:grid;
-    grid-template-columns: repeat(3, minmax(280px, 1fr));
-    gap:34px;
-    max-width:1200px;
-    margin:0 auto;
-    padding:20px;
-    align-items:start;
-  }
-  .side-image{ width:100%; max-width:360px; border-radius:14px; display:block; margin:0 auto; }
-  .cell{ display:flex; flex-direction:column; align-items:center; }
-  .caption{ text-align:center; font-size:18px; color:#ccc; margin-top:10px; font-family:cursive, serif; }
+    /* Video */
+    .video-wrapper{ width:100%; max-width:360px; margin:0 auto; position:relative; }
+    .video-wrapper::before{ content:""; display:block; padding-bottom:56.25%; }
+    .video-wrapper iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
-  /* Responsive video same width as images */
-  .video-wrapper{ width:100%; max-width:360px; margin:0 auto; position:relative; }
-  .video-wrapper::before{ content:""; display:block; padding-bottom:56.25%; }
-  .video-wrapper iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+    /* Buttons */
+    .buttons{
+      margin:36px auto 10px; display:flex; flex-wrap:wrap; gap:16px; justify-content:center; max-width:1200px;
+    }
+    .btn{
+      font-family:cursive, serif; font-size:24px; line-height:1;
+      padding:18px 30px; border:none; border-radius:12px; cursor:pointer;
+      color:#fff; background:var(--btn-red);
+      box-shadow:0 8px 18px rgba(0,0,0,.35);
+    }
+    .btn:hover{ background:var(--btn-red-hover); }
+    .btn-link{ text-decoration:none; display:inline-block; }
 
-  /* Buttons: readable red */
-  .buttons{
-    margin:36px auto 10px;
-    display:flex; flex-wrap:wrap; gap:16px; justify-content:center;
-    max-width:1200px;
-  }
-  .btn{
-    font-family:cursive, serif; font-size:24px; line-height:1;
-    padding:18px 30px; border:none; border-radius:12px; cursor:pointer;
-    color:#fff; background:var(--btn-red);
-    box-shadow:0 8px 18px rgba(0,0,0,.35);
-  }
-  .btn:hover{ background:var(--btn-red-hover); }
-  .btn-link{ text-decoration:none; display:inline-block; }
+    .shop-note{ text-align:center; margin:6px auto 24px; font-size:16px; color:#ddd; font-family:cursive, serif; }
 
-  .shop-note{
-    text-align:center; margin:6px auto 24px; font-size:16px; color:#ddd; font-family:cursive, serif;
-  }
+    /* Dialogs */
+    .modal{ display:none; position:fixed; inset:0; z-index:10; background:rgba(0,0,0,.85); }
+    .modal[open]{ display:block; }
+    .modal-content{
+      background:#111; color:#fff; margin:8% auto; padding:28px; border:2px solid red;
+      width:90%; max-width:640px; border-radius:12px; position:relative; text-align:left;
+      font-size:18px; line-height:1.65; font-family:cursive, serif;
+      outline: none;
+    }
+    .modal h2{ margin:0 0 12px; font-size:24px; }
+    .close-btn{
+      position:absolute; top:10px; right:16px; color:#fff; font-size:26px; font-weight:bold; cursor:pointer; background:none; border:0;
+    }
 
-  /* Modals */
-  #aboutModal,#missionModal{ display:none; position:fixed; inset:0; z-index:10; background:rgba(0,0,0,.85); }
-  .modal-content{
-    background:#111; color:#fff; margin:8% auto; padding:28px; border:2px solid red;
-    width:90%; max-width:640px; border-radius:12px; position:relative; text-align:left;
-    font-size:18px; line-height:1.65; font-family:cursive, serif;
-  }
-  .close-btn{ position:absolute; top:10px; right:16px; color:#fff; font-size:26px; font-weight:bold; cursor:pointer; }
+    /* Money glyphs */
+    .money{
+      position:absolute; font-size:34px; opacity:.95;
+      animation:spew 6.5s ease-out forwards;
+      will-change: transform, opacity;
+      contain:paint;
+    }
+    @keyframes spew{
+      0%   { transform:translate(0,0) scale(1); opacity:1; }
+      40%  { transform:translate(var(--x), var(--y)) scale(1.3); opacity:.85; }
+      100% { transform:translate(var(--xEnd), 100vh) scale(1.5) rotate(360deg); opacity:0; }
+    }
 
-  /* Dollar-sign animation (spew from heart top, then fall). This is the working version you approved. */
-  .money{
-    position:absolute;
-    font-size:34px;
-    opacity:.95;
-    animation: spew 6.5s ease-out forwards;
-    will-change: transform, opacity;
-  }
-  @keyframes spew{
-    0%   { transform:translate(0,0) scale(1); opacity:1; }
-    40%  { transform:translate(var(--x), var(--y)) scale(1.3); opacity:.85; }
-    100% { transform:translate(var(--xEnd), 100vh) scale(1.5) rotate(360deg); opacity:0; }
-  }
+    /* Mobile */
+    @media (max-width:900px){
+      .layout{ grid-template-columns:1fr; }
+      .video-wrapper, .side-image{ max-width:92vw; }
+      .btn{ font-size:20px; padding:16px 24px; }
+      .caption{ font-size:16px; }
+    }
 
-  /* Mobile stack */
-  @media (max-width:900px){
-    .layout{ grid-template-columns:1fr; }
-    .video-wrapper, .side-image{ max-width:92vw; }
-    .btn{ font-size:20px; padding:16px 24px; }
-    .caption{ font-size:16px; }
-  }
-</style>
+    /* Reduced motion: pause pulse and emitter animations */
+    @media (prefers-reduced-motion: reduce){
+      .logo{ animation:none }
+      .money{ animation:none }
+    }
+  </style>
 </head>
 <body>
-  <!-- money layer -->
-  <div class="money-layer" id="money-layer"></div>
+  <div class="money-layer" id="money-layer" aria-hidden="true"></div>
 
-  <div class="content">
-    <!-- top logo -->
-    <div class="logo-container">
-      <img src="red%20logo%20btnyc.png" alt="Heart Logo" class="logo" id="heartLogo"/>
+  <div class="content" id="page-content">
+    <header class="logo-container">
+      <img src="red%20logo%20btnyc.png" alt="Buying Time NYC heart logo" class="logo" id="heartLogo" width="240" height="240" loading="eager" />
+    </header>
+
+    <div class="subway-title" aria-label="Buying Time NYC">
+      <span class="subway-letter" style="background-color:#FF6319">B</span>
+      <span class="subway-letter" style="background-color:#6CBE45">U</span>
+      <span class="subway-letter" style="background-color:#FFD100">Y</span>
+      <span class="subway-letter" style="background-color:#00933C">I</span>
+      <span class="subway-letter" style="background-color:#FFD100">N</span>
+      <span class="subway-letter" style="background-color:#6CBE45">G</span>
+      <span class="subway-letter" style="background-color:#00ADD0">T</span>
+      <span class="subway-letter" style="background-color:#00933C">I</span>
+      <span class="subway-letter" style="background-color:#FF6319">M</span>
+      <span class="subway-letter" style="background-color:#0039A6">E</span>
+      <span class="subway-letter" style="background-color:#FFD100">N</span>
+      <span class="subway-letter" style="background-color:#FFD100">Y</span>
+      <span class="subway-letter" style="background-color:#0039A6">C</span>
     </div>
 
-    <!-- subway title -->
-    <div class="subway-title">
-      <div class="subway-letter" style="background-color:#FF6319">B</div>
-      <div class="subway-letter" style="background-color:#6CBE45">U</div>
-      <div class="subway-letter" style="background-color:#FFD100">Y</div>
-      <div class="subway-letter" style="background-color:#00933C">I</div>
-      <div class="subway-letter" style="background-color:#FFD100">N</div>
-      <div class="subway-letter" style="background-color:#6CBE45">G</div>
-      <div class="subway-letter" style="background-color:#00ADD0">T</div>
-      <div class="subway-letter" style="background-color:#00933C">I</div>
-      <div class="subway-letter" style="background-color:#FF6319">M</div>
-      <div class="subway-letter" style="background-color:#0039A6">E</div>
-      <div class="subway-letter" style="background-color:#FFD100">N</div>
-      <div class="subway-letter" style="background-color:#FFD100">Y</div>
-      <div class="subway-letter" style="background-color:#0039A6">C</div>
-    </div>
+    <p class="tagline" aria-label="tagline">
+      𝒲𝒽𝑒𝓇𝑒 𝒾𝓃𝓈𝓅𝒾𝓇𝒶𝓉𝒾𝓸𝓃 𝓂𝑒𝑒𝓉𝓈 𝒽𝓊𝓈𝓉𝓁𝑒, 𝒶𝓃𝒹 𝓉𝒾𝓂𝑒 𝒾𝓈 𝓉𝒽𝑒 𝓊𝓁𝓉𝒾𝓂𝒶𝓉𝑒 𝒸𝓊𝓇𝓇𝑒𝓃𝒸𝓎
+    </p>
 
-    <!-- tagline -->
-    <div class="tagline">
-      𝒲𝒽𝑒𝓇𝑒 𝒾𝓃𝓈𝓅𝒾𝓇𝒶𝓉𝒾𝓸𝓃 𝓂𝑒𝑒𝓉𝓈 𝒽𝓊𝓈𝓉𝓁𝑒, 𝒶𝓃𝒹 𝓉𝒾𝓶𝑒 𝒾𝓈 𝓉𝒽𝑒 𝓊𝓁𝓉𝒾𝓂𝒶𝓉𝑒 𝒸𝓊𝓇𝓇𝑒𝓃𝒸𝓎
-    </div>
+    <main class="layout">
+      <section class="cell">
+        <img src="CPREAL.jpeg" class="side-image" alt="Petey and Chance" width="360" height="480" loading="lazy" />
+        <p class="caption">𝓟𝓮𝓽𝓮𝔂 𝓪𝓷𝓭 𝓒𝓱𝓪𝓷𝓬𝓮 — 𝓽𝓱𝓮 𝓱𝓮𝓪𝓻𝓽 𝓸𝓯 𝓑𝓾𝔂𝓲𝓷𝓰 𝓣𝓲𝓶𝓮 𝓝𝓨𝓒.</p>
+      </section>
 
-    <!-- three-column row: Real | Video | Cartoon -->
-    <div class="layout">
-      <!-- Left: real -->
-      <div class="cell">
-        <img src="CPREAL.jpeg" class="side-image" alt="Petey and Chance" />
-        <div class="caption">𝓟𝓮𝓽𝓮𝔂 𝓪𝓷𝓭 𝓒𝓱𝓪𝓷𝓬𝓮 — 𝓽𝓱𝓮 𝓱𝓮𝓪𝓻𝓽 𝓸𝓯 𝓑𝓾𝔂𝓲𝓷𝓰 𝓣𝓲𝓶𝓮 𝓝𝓨𝓒.</div>
-      </div>
-
-      <!-- Middle: video -->
-      <div class="cell">
+      <section class="cell">
         <div class="video-wrapper">
           <iframe
             src="https://www.youtube.com/embed/Vpl7xzAcWyM"
             title="Buying Time NYC - Short"
+            loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
           </iframe>
         </div>
-      </div>
+      </section>
 
-      <!-- Right: cartoon -->
-      <div class="cell">
-        <img src="CPTOONPNG.png" class="side-image" alt="Cartoon Petey and Chance" />
-        <div class="caption">𝓐 𝓬𝓪𝓻𝓽𝓸𝓸𝓷 𝓻𝓮𝓯𝓵𝓮𝓬𝓽𝓲𝓸𝓷 𝓸𝓯 𝓹𝓪𝓼𝓼𝓲𝓸𝓷 𝓪𝓷𝓭 𝓭𝓻𝓮𝓪𝓶.</div>
-      </div>
-    </div>
+      <section class="cell">
+        <img src="CPTOONPNG.png" class="side-image" alt="Cartoon Petey and Chance" width="360" height="480" loading="lazy" />
+        <p class="caption">𝓐 𝓬𝓪𝓻𝓽𝓸𝓸𝓷 𝓻𝓮𝓯𝓵𝓮𝓬𝓽𝓲𝓸𝓷 𝓸𝓯 𝓹𝓪𝓼𝓼𝓲𝓸𝓷 𝓪𝓷𝓭 𝓭𝓻𝓮𝓪𝓶.</p>
+      </section>
+    </main>
 
-    <!-- Buttons -->
-    <div class="buttons">
-      <button class="btn" onclick="openModal('aboutModal')">𝓜𝓮𝓮𝓽 𝓽𝓱𝓮 𝓯𝓸𝓾𝓷𝓭𝓮𝓻</button>
-      <button class="btn" onclick="openModal('missionModal')">𝓣𝓱𝓮 𝓜𝓲𝓼𝓼𝓲𝓸𝓷</button>
+    <nav class="buttons" aria-label="primary">
+      <button class="btn" type="button" data-open="aboutModal" aria-controls="aboutModal" aria-expanded="false">𝓜𝓮𝓮𝓽 𝓽𝓱𝓮 𝓯𝓸𝓾𝓷𝓭𝓮𝓻</button>
+      <button class="btn" type="button" data-open="missionModal" aria-controls="missionModal" aria-expanded="false">𝓣𝓱𝓮 𝓜𝓲𝓼𝓼𝓲𝓸𝓷</button>
       <a class="btn btn-link" href="https://linktr.ee/Buyingtimenyc" target="_blank" rel="noopener">𝓕𝓸𝓵𝓵𝓸𝔀 𝓽𝓱𝓮 𝓶𝓸𝓿𝓮𝓶𝓮𝓷𝓽</a>
-    </div>
-    <div class="shop-note">Shop coming soon — tomorrow</div>
+    </nav>
+    <p class="shop-note" aria-live="polite">Shop coming soon — tomorrow</p>
   </div>
 
-  <!-- Modals -->
-  <div id="aboutModal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
-      <p>
+  <!-- About dialog -->
+  <div id="aboutModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" aria-describedby="aboutDesc">
+    <div class="modal-content" tabindex="-1">
+      <button class="close-btn" type="button" aria-label="Close dialog" data-close="aboutModal">&times;</button>
+      <h2 id="aboutTitle">Meet the founder</h2>
+      <p id="aboutDesc">
         Petey is the founder of Buying Time NYC — a vision born from adversity, hustle, and pure creative fire.
         After a life-changing injury that cost him his arm, he refused to stop. He became a one-handed drummer, a collector,
         a builder of brands, and a living reminder that time is the ultimate currency.
@@ -211,10 +197,12 @@
     </div>
   </div>
 
-  <div id="missionModal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('missionModal')">&times;</span>
-      <p>
+  <!-- Mission dialog -->
+  <div id="missionModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="missionTitle" aria-describedby="missionDesc">
+    <div class="modal-content" tabindex="-1">
+      <button class="close-btn" type="button" aria-label="Close dialog" data-close="missionModal">&times;</button>
+      <h2 id="missionTitle">The mission</h2>
+      <p id="missionDesc">
         Buying Time NYC represents second chances, relentless ambition, and turning time into impact.
         Every design, video, and collectible carries the same message: resilience pays.
         <br><br>This movement is about making every second count.
@@ -222,59 +210,160 @@
     </div>
   </div>
 
-<script>
-  const layer = document.getElementById("money-layer");
-  const heart = document.getElementById("heartLogo");
+  <script>
+    // ---------- Money emitter (RAF, throttled, reduced motion-aware) ----------
+    const layer = document.getElementById("money-layer");
+    const heart = document.getElementById("heartLogo");
+    const dialogs = new Set();
 
-  function rand(min, max){ return min + Math.random()*(max-min); }
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let spawnMs = 160;                // lower = denser
+    let acc = 0;
+    let rafId = null;
 
-  // Dollar signs spew from the TOP CENTER of the heart, then fall across page
-  function createMoney(){
-    if(!heart) return;
+    function rand(min, max){ return min + Math.random()*(max-min); }
 
-    const m = document.createElement("div");
-    m.className = "money";
-    m.textContent = "$";
+    function createMoney(){
+      if(!heart) return;
+      const m = document.createElement("div");
+      m.className = "money";
+      m.textContent = "$";
+      const colors = ["#00ff73","#ff2b2b","#111111"];
+      m.style.color = colors[(Math.random()*colors.length)|0];
 
-    const colors = ["#00ff73","#ff2b2b","#111111"]; // green, red, near-black
-    m.style.color = colors[Math.floor(Math.random()*colors.length)];
+      const rect = heart.getBoundingClientRect();
+      const xCenter = rect.left + rect.width/2 + window.scrollX;
+      const yTop = rect.top + window.scrollY - 6;
 
-    const rect = heart.getBoundingClientRect();
-    const xCenter = rect.left + rect.width/2;
-    const yTop = rect.top + window.scrollY - 6; // slightly above heart top
+      const angle = rand(-Math.PI/6, Math.PI/6);
+      const radius = rand(140, 260);
+      const x = Math.cos(angle) * radius;
+      const y = -Math.abs(Math.sin(angle) * radius) - rand(20, 80);
+      const xEnd = (Math.random() - 0.5) * window.innerWidth * 0.9;
 
-    // Upward cone from heart top, then drift horizontally and fall
-    const angle = rand(-Math.PI/6, Math.PI/6);
-    const radius = rand(140, 260);
-    const x = Math.cos(angle) * radius;
-    const y = -Math.abs(Math.sin(angle) * radius) - rand(20, 80); // up
-    const xEnd = (Math.random() - 0.5) * window.innerWidth * 0.9;
+      m.style.left = xCenter + "px";
+      m.style.top  = yTop + "px";
+      m.style.setProperty("--x", x + "px");
+      m.style.setProperty("--y", y + "px");
+      m.style.setProperty("--xEnd", xEnd + "px");
 
-    m.style.left = xCenter + "px";
-    m.style.top  = yTop + "px";
-    m.style.setProperty("--x", x + "px");
-    m.style.setProperty("--y", y + "px");
-    m.style.setProperty("--xEnd", xEnd + "px");
+      // remove on animation end to avoid timers piling up
+      m.addEventListener("animationend", () => m.remove());
+      layer.appendChild(m);
+    }
 
-    layer.appendChild(m);
-    setTimeout(()=> m.remove(), 6500);
-  }
+    function shouldRunEmitter(){
+      if (prefersReduced.matches) return false;
+      if (document.hidden) return false;
+      if (dialogs.size > 0) return false; // pause when any dialog open
+      return true;
+    }
 
-  // Continuous emission with occasional doubles
-  setInterval(()=>{
-    createMoney();
-    if(Math.random()<0.4) createMoney();
-  }, 90);
+    function tick(ts){
+      if(!shouldRunEmitter()){
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
+      acc += (typeof tick.lastTs === "number") ? (ts - tick.lastTs) : spawnMs;
+      tick.lastTs = ts;
 
-  // Modals
-  function openModal(id){ document.getElementById(id).style.display="block"; }
-  function closeModal(id){ document.getElementById(id).style.display="none"; }
-  window.onclick = function(e){
-    ["aboutModal","missionModal"].forEach(id=>{
-      const m = document.getElementById(id);
-      if(e.target === m) m.style.display="none";
+      while(acc >= spawnMs){
+        createMoney();
+        if(Math.random() < 0.4) createMoney();
+        acc -= spawnMs;
+      }
+      rafId = requestAnimationFrame(tick);
+    }
+    rafId = requestAnimationFrame(tick);
+    document.addEventListener("visibilitychange", ()=>{ /* loop continues; gating handled in shouldRunEmitter */ });
+    prefersReduced.addEventListener?.("change", ()=>{ /* auto-respect */ });
+
+    // ---------- Accessible dialogs (focus trap, Esc, overlay click) ----------
+    const pageContent = document.getElementById("page-content");
+    const openBtns = document.querySelectorAll("[data-open]");
+    const closeBtns = document.querySelectorAll("[data-close]");
+
+    const focusableSel = [
+      "a[href]","area[href]","button:not([disabled])","input:not([disabled])",
+      "select:not([disabled])","textarea:not([disabled])","[tabindex]:not([tabindex='-1'])"
+    ].join(",");
+
+    const dialogState = new Map(); // id -> { opener, foci }
+
+    function setInert(inert){
+      // minimal inert: hide from AT and block tabbing
+      pageContent.setAttribute("aria-hidden", inert ? "true" : "false");
+      if(inert) pageContent.setAttribute("inert",""); else pageContent.removeAttribute("inert");
+    }
+
+    function openDialog(id, opener){
+      const modal = document.getElementById(id);
+      if(!modal) return;
+      modal.setAttribute("open","");
+      dialogs.add(id);
+      setInert(true);
+
+      const foci = Array.from(modal.querySelectorAll(focusableSel));
+      dialogState.set(id, { opener, foci });
+      const firstFocus = modal.querySelector(".modal-content") || modal;
+      firstFocus.focus();
+
+      const btn = document.querySelector(`[data-open="${id}"]`);
+      if(btn) btn.setAttribute("aria-expanded","true");
+    }
+
+    function closeDialog(id){
+      const modal = document.getElementById(id);
+      if(!modal) return;
+      modal.removeAttribute("open");
+      dialogs.delete(id);
+      setInert(false);
+
+      const state = dialogState.get(id);
+      const opener = state?.opener;
+      if(opener) opener.focus();
+      dialogState.delete(id);
+
+      const btn = document.querySelector(`[data-open="${id}"]`);
+      if(btn) btn.setAttribute("aria-expanded","false");
+    }
+
+    openBtns.forEach(btn=>{
+      btn.addEventListener("click", ()=> openDialog(btn.dataset.open, btn));
     });
-  };
-</script>
+
+    closeBtns.forEach(btn=>{
+      btn.addEventListener("click", ()=> closeDialog(btn.dataset.close));
+    });
+
+    document.addEventListener("click", (e)=>{
+      const modal = e.target.closest(".modal");
+      if(modal && e.target === modal){
+        closeDialog(modal.id);
+      }
+    });
+
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape"){
+        // close the most recently opened dialog
+        const lastId = Array.from(dialogs).pop();
+        if(lastId){ e.preventDefault(); closeDialog(lastId); }
+      }
+      if(e.key === "Tab"){
+        // trap focus inside the top-most open dialog
+        const lastId = Array.from(dialogs).pop();
+        if(!lastId) return;
+        const { foci } = dialogState.get(lastId) || {};
+        if(!foci || foci.length === 0) return;
+
+        const first = foci[0];
+        const last = foci[foci.length - 1];
+        const active = document.activeElement;
+
+        if(e.shiftKey && active === first){ e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey && active === last){ e.preventDefault(); first.focus(); }
+      }
+    });
+  </script>
 </body>
 </html>
