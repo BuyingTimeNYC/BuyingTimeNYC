@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -11,13 +11,11 @@
     --btn-red-hover:#ff2e2e;
   }
 
-  /* Base */
   html,body{height:100%}
   body{
     margin:0; padding:0; color:#fff; background:#000; font-family:Arial, sans-serif; overflow-x:hidden; position:relative;
   }
 
-  /* Dense LV-style watermark using two tiled layers (no stray text) */
   body::before,
   body::after{
     content:"";
@@ -29,38 +27,31 @@
     z-index:0;
   }
   body::before{
-    background-size:72px auto;            /* density */
+    background-size:72px auto;
     background-position:0 0;
-    opacity:.10;                           /* visibility */
+    opacity:.10;
   }
   body::after{
     background-size:72px auto;
-    background-position:36px 36px;         /* offset for tighter pattern */
+    background-position:36px 36px;
     opacity:.08;
   }
 
-  /* Money layer above watermark, below content */
   .money-layer{ position:fixed; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
-
-  /* Content above effects */
   .content{ position:relative; z-index:2; }
 
-  /* Top logo */
   .logo-container{ text-align:center; margin-top:30px; }
   .logo{ width:240px; animation:pump .8s infinite; }
   @keyframes pump{ 0%{transform:scale(1)} 50%{transform:scale(1.15)} 100%{transform:scale(1)} }
 
-  /* Subway title */
   .subway-title{ display:flex; justify-content:center; flex-wrap:wrap; padding-top:10px; }
   .subway-letter{
     width:48px; height:48px; margin:4px; border-radius:50%;
     color:#fff; font-weight:bold; font-size:22px; display:flex; align-items:center; justify-content:center;
   }
 
-  /* Tagline */
   .tagline{ text-align:center; font-size:22px; margin:18px 0 40px; color:var(--gold); font-family:cursive, serif; }
 
-  /* Three-column layout: Real | Video | Cartoon */
   .layout{
     display:grid;
     grid-template-columns: repeat(3, minmax(280px, 1fr));
@@ -74,12 +65,10 @@
   .cell{ display:flex; flex-direction:column; align-items:center; }
   .caption{ text-align:center; font-size:18px; color:#ccc; margin-top:10px; font-family:cursive, serif; }
 
-  /* Responsive video same width as images */
   .video-wrapper{ width:100%; max-width:360px; margin:0 auto; position:relative; }
   .video-wrapper::before{ content:""; display:block; padding-bottom:56.25%; }
   .video-wrapper iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
-  /* Buttons: readable red */
   .buttons{
     margin:36px auto 10px;
     display:flex; flex-wrap:wrap; gap:16px; justify-content:center;
@@ -98,7 +87,6 @@
     text-align:center; margin:6px auto 24px; font-size:16px; color:#ddd; font-family:cursive, serif;
   }
 
-  /* Modals */
   #aboutModal,#missionModal{ display:none; position:fixed; inset:0; z-index:10; background:rgba(0,0,0,.85); }
   .modal-content{
     background:#111; color:#fff; margin:8% auto; padding:28px; border:2px solid red;
@@ -107,7 +95,6 @@
   }
   .close-btn{ position:absolute; top:10px; right:16px; color:#fff; font-size:26px; font-weight:bold; cursor:pointer; }
 
-  /* Dollar-sign animation (spew from heart top, then fall). This is the working version you approved. */
   .money{
     position:absolute;
     font-size:34px;
@@ -121,7 +108,6 @@
     100% { transform:translate(var(--xEnd), 100vh) scale(1.5) rotate(360deg); opacity:0; }
   }
 
-  /* Mobile stack */
   @media (max-width:900px){
     .layout{ grid-template-columns:1fr; }
     .video-wrapper, .side-image{ max-width:92vw; }
@@ -131,16 +117,13 @@
 </style>
 </head>
 <body>
-  <!-- money layer -->
   <div class="money-layer" id="money-layer"></div>
 
   <div class="content">
-    <!-- top logo -->
     <div class="logo-container">
       <img src="red%20logo%20btnyc.png" alt="Heart Logo" class="logo" id="heartLogo"/>
     </div>
 
-    <!-- subway title -->
     <div class="subway-title">
       <div class="subway-letter" style="background-color:#FF6319">B</div>
       <div class="subway-letter" style="background-color:#6CBE45">U</div>
@@ -157,20 +140,16 @@
       <div class="subway-letter" style="background-color:#0039A6">C</div>
     </div>
 
-    <!-- tagline -->
     <div class="tagline">
-      𝒲𝒽𝑒𝓇𝑒 𝒾𝓃𝓈𝓅𝒾𝓇𝒶𝓉𝒾𝓸𝓃 𝓂𝑒𝑒𝓉𝓈 𝒽𝓊𝓈𝓉𝓁𝑒, 𝒶𝓃𝒹 𝓉𝒾𝓶𝑒 𝒾𝓈 𝓉𝒽𝑒 𝓊𝓁𝓉𝒾𝓂𝒶𝓉𝑒 𝒸𝓊𝓇𝓇𝑒𝓃𝒸𝓎
+      𝒲𝒽𝑒𝓇𝑒 𝒾𝓃𝓈𝓅𝒾𝓇𝒶𝓉𝒾𝓸𝓃 𝓂𝑒𝑒𝓉𝓈 𝒽𝓊𝓈𝓉𝓁𝑒, 𝒶𝓃𝒹 𝓉𝒾𝓂𝑒 𝒾𝓈 𝓉𝒽𝑒 𝓊𝓁𝓉𝒾𝓂𝒶𝓉𝑒 𝒸𝓊𝓇𝓇𝑒𝓃𝒸𝓎
     </div>
 
-    <!-- three-column row: Real | Video | Cartoon -->
     <div class="layout">
-      <!-- Left: real -->
       <div class="cell">
         <img src="CPREAL.jpeg" class="side-image" alt="Petey and Chance" />
         <div class="caption">𝓟𝓮𝓽𝓮𝔂 𝓪𝓷𝓭 𝓒𝓱𝓪𝓷𝓬𝓮 — 𝓽𝓱𝓮 𝓱𝓮𝓪𝓻𝓽 𝓸𝓯 𝓑𝓾𝔂𝓲𝓷𝓰 𝓣𝓲𝓶𝓮 𝓝𝓨𝓒.</div>
       </div>
 
-      <!-- Middle: video -->
       <div class="cell">
         <div class="video-wrapper">
           <iframe
@@ -182,23 +161,34 @@
         </div>
       </div>
 
-      <!-- Right: cartoon -->
       <div class="cell">
         <img src="CPTOONPNG.png" class="side-image" alt="Cartoon Petey and Chance" />
         <div class="caption">𝓐 𝓬𝓪𝓻𝓽𝓸𝓸𝓷 𝓻𝓮𝓯𝓵𝓮𝓬𝓽𝓲𝓸𝓷 𝓸𝓯 𝓹𝓪𝓼𝓼𝓲𝓸𝓷 𝓪𝓷𝓭 𝓭𝓻𝓮𝓪𝓶.</div>
       </div>
     </div>
 
-    <!-- Buttons -->
     <div class="buttons">
       <button class="btn" onclick="openModal('aboutModal')">𝓜𝓮𝓮𝓽 𝓽𝓱𝓮 𝓯𝓸𝓾𝓷𝓭𝓮𝓻</button>
       <button class="btn" onclick="openModal('missionModal')">𝓣𝓱𝓮 𝓜𝓲𝓼𝓼𝓲𝓸𝓷</button>
       <a class="btn btn-link" href="https://linktr.ee/Buyingtimenyc" target="_blank" rel="noopener">𝓕𝓸𝓵𝓵𝓸𝔀 𝓽𝓱𝓮 𝓶𝓸𝓿𝓮𝓶𝓮𝓷𝓽</a>
     </div>
     <div class="shop-note">Shop coming soon — tomorrow</div>
+
+    <!-- Featured Product -->
+    <section id="featured-product" style="text-align:center; padding:60px 20px; background:#000; color:#fff;">
+      <h2 style="font-family:'Shortages',serif; font-size:2.2em; margin-bottom:40px;">Featured Print</h2>
+
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:40px;">
+        <div style="width:320px;">
+          <img src="huskyDINOlunar 2.png" alt="Husky Lunar Print" style="width:100%; border-radius:12px;">
+          <button style="margin-top:15px; background:#e11919; border:none; color:white; padding:10px 20px; border-radius:8px; cursor:pointer;">
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <!-- Modals -->
   <div id="aboutModal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
@@ -228,45 +218,35 @@
 
   function rand(min, max){ return min + Math.random()*(max-min); }
 
-  // Dollar signs spew from the TOP CENTER of the heart, then fall across page
   function createMoney(){
     if(!heart) return;
-
     const m = document.createElement("div");
     m.className = "money";
     m.textContent = "$";
-
-    const colors = ["#00ff73","#ff2b2b","#111111"]; // green, red, near-black
+    const colors = ["#00ff73","#ff2b2b","#111111"];
     m.style.color = colors[Math.floor(Math.random()*colors.length)];
-
     const rect = heart.getBoundingClientRect();
     const xCenter = rect.left + rect.width/2;
-    const yTop = rect.top + window.scrollY - 6; // slightly above heart top
-
-    // Upward cone from heart top, then drift horizontally and fall
+    const yTop = rect.top + window.scrollY - 6;
     const angle = rand(-Math.PI/6, Math.PI/6);
     const radius = rand(140, 260);
     const x = Math.cos(angle) * radius;
-    const y = -Math.abs(Math.sin(angle) * radius) - rand(20, 80); // up
+    const y = -Math.abs(Math.sin(angle) * radius) - rand(20, 80);
     const xEnd = (Math.random() - 0.5) * window.innerWidth * 0.9;
-
     m.style.left = xCenter + "px";
     m.style.top  = yTop + "px";
     m.style.setProperty("--x", x + "px");
     m.style.setProperty("--y", y + "px");
     m.style.setProperty("--xEnd", xEnd + "px");
-
     layer.appendChild(m);
     setTimeout(()=> m.remove(), 6500);
   }
 
-  // Continuous emission with occasional doubles
   setInterval(()=>{
     createMoney();
     if(Math.random()<0.4) createMoney();
   }, 90);
 
-  // Modals
   function openModal(id){ document.getElementById(id).style.display="block"; }
   function closeModal(id){ document.getElementById(id).style.display="none"; }
   window.onclick = function(e){
@@ -276,49 +256,5 @@
     });
   };
 </script>
-</body><!-- Featured Prints Section -->
-<section id="featured-prints" style="text-align:center; padding:60px 20px; background:#000; color:#fff;">
-  <h2 style="font-family:'Shortages',serif; font-size:2.5em; margin-bottom:40px;">Featured Prints</h2>
-
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:40px;">
-
-    <!-- 1 -->
-    <div style="width:300px;">
-      <img src="first piece finale.png" alt="First Piece" style="width:100%; border-radius:10px;">
-      <button style="margin-top:15px; background:#e11919; border:none; color:white; padding:10px 20px; border-radius:8px; cursor:pointer;">Buy Now</button>
-    </div>
-
-    <!-- 2 -->
-    <div style="width:300px;">
-      <img src="second piece finale.png" alt="Second Piece" style="width:100%; border-radius:10px;">
-      <button style="margin-top:15px; background:#e11919; border:none; color:white; padding:10px 20px; border-radius:8px; cursor:pointer;">Buy Now</button>
-    </div>
-
-    <!-- 3 -->
-    <div style="width:300px;">
-      <img src="third piece finale.png" alt="Third Piece" style="width:100%; border-radius:10px;">
-      <button style="margin-top:15px; background:#e11919; border:none; color:white; padding:10px 20px; border-radius:8px; cursor:pointer;">Buy Now</button>
-    </div>
-
-    <!-- 4 -->
-    <div style="width:300px;">
-      <img src="huskyDINOlunar 2.png" alt="Husky Dino Lunar" style="width:100%; border-radius:10px;">
-      <button style="margin-top:15px; background:#e11919; border:none; color:white; padding:10px 20px; border-radius:8px; cursor:pointer;">Buy Now</button>
-    </div>
-
-    <!-- 5 -->
-    <div style="width:300px;">
-      <img src="JEDICATSITHCATprint.png" alt="Jedi Cat Sith Cat" style="width:100%; border-radius:10px;">
-      <button style="margin-top:15px; background:#e11919; border:none; color:white; padding:10px 20px; border-radius:8px; cursor:pointer;">Buy Now</button>
-    </div>
-
-    <!-- 6 -->
-    <div style="width:300px;">
-      <img src="starcats print.png" alt="Starcats" style="width:100%; border-radius:10px;">
-      <button style="margin-top:15px; background:#e11919; border:none; color:white; padding:10px 20px; border-radius:8px; cursor:pointer;">Buy Now</button>
-    </div>
-
-  </div>
-</section>
-
+</body>
 </html>
